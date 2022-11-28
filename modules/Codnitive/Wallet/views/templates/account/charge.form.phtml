@@ -1,0 +1,41 @@
+<?php 
+    $block = new \app\modules\Codnitive\Wallet\blocks\ChargeForm;
+    $block->html()->setNameSpace('wallet_charge');
+?>
+
+<div class="p-2 wallet-charge-form">
+    <p class="d-flex right-text justify-content-start">
+        <i class="d-flex align-self-center fa fa-info-circle color mr-2 ml-0"></i>
+        <?= __('wallet', 'Enter credit amount you want to charge') ?>
+    </p>
+    <p class="fz-14 d-flex justify-content-start ml-3 mr-0 wallet-description">
+        <?= __('wallet', 'When you charge your account you can have faster and easier checkout process.') ?>
+    </p>
+
+    <?php $form = $block->beginForm([
+        'action' => tools()->getUrl('account/wallet/chargeRequest'),
+        'options' => [
+            'method' => 'post',
+            'id' => 'wallet_charge_form'
+        ]
+    ]); ?>
+        <div class="d-flex flex-column align-items-start mt-3 mb-2 mr-3 force-text-right">
+            <?= tools()->getCsrfInput() ?>
+            <?= $block->html()->getPriceField($form, $formModel, "charge_amount", '', '', 
+                ['form_group_class' => 'col-12 fz-14', 'class' => 'ltr-field']); 
+            ?>
+            <?= $block->html()->submitButton(
+                __('wallet', 'Charge Account'), 
+                [
+                    'class' => 'btn-blue col-9',
+                    'id' => 'wallet_charge_form_submit',
+                ]
+            ) ?>
+        </div>
+    <?php $block->endForm(); ?>
+</div>
+
+
+
+
+

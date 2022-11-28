@@ -1,0 +1,60 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
+
+/* @var $this yii\web\View */
+/* @var $model app\modules\Codnitive\CentralOffice\models\coding\Coding */
+/* @var $form yii\widgets\ActiveForm */
+/* @var $FindJob */
+?>
+<?php
+$script = <<<JS
+$("#jobs").on('beforeSubmit',function(e) {
+    NProgress.start();
+    var form = $(this);
+    var formData = form.serialize();
+    $.ajax
+    ({
+    url:form.attr('action'),
+    type:form.attr('method'),
+    data:formData,
+    success:function(data) {
+     $.pjax.reload({container:'#org-index',async:false});
+    $(".org_modal_closed").trigger('click');
+    NProgress.done();
+    }
+    })
+}).on('submit',function(e) {
+    $(document).off('submit','#jobs-form form[data-pjax]');
+    e.preventDefault();
+});
+
+JS;
+$this->registerJs($script);
+?>
+
+<div class="jobs-form">
+    <?php Pjax::begin(['id' => 'jobs-form', 'timeout' => false, 'enablePushState' => false]); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['data-pjax' => 0, 'autocomplete' => 'off',],
+        'id' => 'jobs',
+    ]); ?>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'code')->textInput(['maxlength' => true])->label('کد واحد سازمانی') ?>
+        </div>
+        <div class="col-md-10">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true])->label('نام واحد سازمانی') ?>
+        </div>
+    </div>
+    <?= $form->field($model, 'active')->hiddenInput(['value' => intval($FindJob->active) + 1])->label(false) ?>
+    <?= $form->field($model, 'parent')->hiddenInput(['value' => $FindJob->id])->label(false) ?>
+    <div class="form-group modal-footer">
+        <?= Html::submitButton('ثبت واحد سازمانی', ['class' => 'btn btn-info']) ?>
+        <button type="button" class="btn" style="float: left" data-dismiss="modal">انصراف</button>
+    </div>
+    <?php ActiveForm::end(); ?>
+    <?php Pjax::end(); ?>
+</div>

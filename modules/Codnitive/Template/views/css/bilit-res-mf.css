@@ -1,0 +1,1016 @@
+/**
+ * https://getbootstrap.com/docs/4.3/layout/overview/#responsive-breakpoints
+ */
+
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+.home2 {
+    height: 135px;
+}
+.sidebar.sticky-box .toggle-card {
+    bottom: 10px;
+    left: auto;
+    right: 25%;
+    height: 60px;
+    padding: 5px;
+    width: auto;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #002c5a;
+    border: 2px solid #eee;
+    background-image: -webkit-linear-gradient(0deg, #3c408f 0%, #5b61cf 100%);
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+}
+.sidebar.sticky-box .toggle-card.maximized {
+    opacity: .5;
+    right: 15%
+}
+.sidebar.sticky-box .toggle-card.maximized span {
+    width: 0;
+    margin: 0 !important;
+    overflow: hidden;
+}
+.sidebar.sticky-box.minimized {
+    max-height: 40px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: visible !important;
+}
+.search-result .right-section .element-item {
+    left: auto !important;
+}
+.right-box-result,
+.blue .right-box-result-confirm {
+    padding-right: 1rem !important;
+}
+.flight-item .passengers-prices-list {
+    margin-top: .5rem !important;
+}
+.refund-item {
+    border: 1px solid #0DA6E0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.refund-item .refund-content {
+    padding: .5rem;
+    border-bottom: 1px solid #0DA6E0 !important;
+}
+.refund-item .refund-footer {
+    padding: .5rem;
+}
+.sidebar.sticky-box .sidebar-content,
+.sidebar.sticky-box .info-box__rules, 
+.sidebar-payment-methods-wrapper #checkout_payment_methods, 
+.sidebar .terms-and-conditions {
+  margin-bottom: 0;
+}
+.submit_btn2:before {
+    right: 2px;
+    bottom: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+}
+.row-header-wrapper {
+    position: relative;
+}
+.passengers-list-wrapper .bootstrap-select.passengers-list {
+    width: 100% !important;
+}
+.copyright {
+    padding-bottom: 40px;
+}
+#back-to-top {
+    z-index: 99999999
+}
+.box-result-item .icon {
+    display: none!important;
+}
+.success-loading .message, 
+.search-loading .message, 
+.non-webfare-loading .message {
+    position: static;
+}
+.success-loading img {
+    margin-top: 20px;
+}
+.item-rout .route-duration {
+    display: none;
+}
+/* Bus Seat Map */
+.bus-seat-map .seat-map {
+    min-height: 700px;
+    /* min-width: 870px */
+}
+.seat-map .bus {
+    background: #fafafa;
+    border: 1px solid #ccc;
+    padding: 15px 25px;
+    margin: 25px;
+    /* min-width: 700px;
+    min-height: 700px; */
+    -webkit-border-radius: 35px 15px 15px 35px;
+    -moz-border-radius: 35px 15px 15px 35px;
+    border-radius: 35px 15px 15px 35px;
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+}
+.seatCharts-row div.seatCharts-cell {
+  -webkit-transform: rotate(-90deg);
+     -moz-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+.seat-map .busBack {
+    left: auto !important;
+    right: auto !important;
+    width: auto;
+    max-width: unset;
+    min-width: unset;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    direction: ltr;
+}
+.seat-map .bus .busFront {
+    width: 70px;
+    margin-right: 1.5rem;
+    border-right: 1px solid #aaa;
+    background: #ccc;
+    padding: 15px 10px;
+    -webkit-border-radius: 15px 0 0 15px;
+    -moz-border-radius: 15px 0 0 15px;
+    border-radius: 15px 0 0 15px;
+}
+.bus .busFront .steering-wheel {
+    width: 35px;
+    -webkit-transform: rotate(-90deg);
+       -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+}
+#bus_seat_reserve .fields-wrapper {
+    top: -40px;
+    left: 0;
+    right: 0;
+}
+.left-box-result .price.sale {
+    font-size: 13px;
+}
+.seatCharts-row {
+    display: flex;
+}
+.user-insurance, 
+.user-insurance .fa-user, 
+.user-insurance .remove-personal-btn {
+    line-height: 38px;
+}
+.tourism-list .right-box-result > .info,
+.tourism-list .location-item .dash {
+    width: 100%;
+}
+/* .right-section .tourism.provider-logo {
+    display: none;
+} */
+.yellow .qty {
+    width: 40px !important;
+}
+#location_services_reserve .checkout-btn {
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef!important;
+}
+.tourism-service-qty-wrapper {
+    flex-wrap: wrap;
+    flex: 0 0 33.3333%;
+}
+.tourism-list label.error {
+    position: static;
+    order: 4;
+    margin-bottom: 0;
+}
+.password-field-wrapper {
+    position: relative;
+}
+.password-viewer {
+    position: absolute;
+    right: 0;
+    /* top: calc(50% - 5px); */
+    top: 27px;
+    vertical-align: middle;
+    font-size: 18px;
+    color: #fc8704;
+    cursor: pointer;
+    padding: 10px;
+}
+.btn-full-color:disabled {
+    opacity: .4;
+}
+.btn-full-color:disabled:hover {
+    background-position: left center !important;
+}
+.fields-swap {
+    font-size: 13px;
+    position: absolute;
+    left: 35px;
+    top: 25px;
+    z-index: 999;
+    background: #fff;
+    padding: 8px;
+    cursor: pointer;
+    border: 1px solid #ced4da;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+}
+#bus_form .fields-swap {
+    left: 50px;
+}
+.box-result-roundtrip .item-search img {
+    width: auto;
+    height: auto;
+}
+.ticket .ticket-right-box span.ticket-number, 
+.ticket .right-box-result span.ticket-number {
+    writing-mode: unset;
+    font-size: 1rem !important;
+}
+.ticket .ticket-box-item .icon, 
+.ticket .box-result-item .icon,
+.ticket .ticket-box-item .icon img, 
+.ticket .box-result-item .icon img {
+    width: 75px;
+    height: 75px;
+}
+.hotel-item .ribbon-top-left,
+.search-result .right-section .hotel-item {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.left-box-hotel {
+    border-top: 1px solid #e0e4e8;
+}
+.hotel-item .image-wrapper img {
+    height: 25vh;
+}
+.btn-show-available-rooms {
+    width: 75%;
+}
+.passengers-qty-btn .fstToggleBtn,
+.intlhotelroom-qty-wrapper .fstToggleBtn {
+    width: 92% !important;
+}
+.field-intlhotel-checkin_checkout_persian, 
+#intlhotelroom-qty-wrapper + div {
+    padding-right: 0 !important;
+}
+.mini-cart-submit-btn {
+    width: 75%;
+    margin: 0 auto;
+}
+table tbody.disabled th.disabled, 
+table tbody.disabled td.disabled {
+    background-color: #ddd;
+}
+.rooms_sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.rooms_sidebar .side-mini-cart {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+.rooms_sidebar #hotel_rooms_mini_cart_form h5 {
+    margin-bottom: 0 !important;
+}
+.rooms_sidebar #hotel_rooms_mini_cart_form tbody {
+    display: none;
+}
+.internation-hotel.responsive-table, 
+.domestic-hotel.table-responsive {
+    overflow-x: hidden;
+}
+.domestic-hotel.room-table .table .col-room,
+.domestic-hotel.room-table .table .col-capacity,
+.domestic-hotel.room-table .table .col-price,
+.domestic-hotel.room-table .table .col-options {
+    width: 100%;
+}
+#passengers-qty-wrapper .close-btn {
+    height: auto;
+}
+#intlhotelroom-qty-dropdown p {
+    font-size: 12px;
+}
+.top_bar_content a span {
+    font-size: 11px;
+}
+.top_bar_content a i {
+    font-size: 18px;
+    padding: 5px;
+    vertical-align: bottom;
+    line-height: 12px;
+}
+.home3 {
+    background-image: none !important;
+    height: 100px;
+}
+.home3 .banner_text_inner {
+    display: none;
+}
+.account .home3 {
+    height: 30px;
+}
+.wallet-info .currency {
+    font-size: 1.4rem;
+}
+
+/** Hotel Detail Page ======= */
+.hotel.detail-page .title-span {
+    display: none;
+}
+.hotel.detail-page .rate-wrapper {
+    text-align: center;
+}
+.hotel.detail-page .rate-star {
+    margin-right: 0 !important;
+}
+.hotel.detail-page .box-header .fa-map-marker {
+    transform: unset;
+}
+.hotel.detail-page .navigation-fixed ul li,
+.hotel.detail-page .nav-tabs .nav-item {
+    flex: 1;
+}
+.hotel.detail-page .navigation-fixed ul li a {
+    width: 100%;
+}
+.hotel.detail-page .sticky-nov.top-0 {
+    top: 0;
+}
+.hotel.detail-page .nav-tabs .nav-item a {
+    /* white-space: nowrap; */
+    border: 0;
+}
+.hotel.detail-page .nav-tabs .nav-item {
+    border: 1px solid transparent;
+    border-color: #ddd #ddd #fff;
+    -webkit-border-top-left-radius: .25rem;
+    -moz-border-top-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+    -webkit-border-top-right-radius: .25rem;
+    -moz-border-top-right-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.hotel.detail-page .nav-tabs .nav-item .active {
+    color: #ED213A;
+}
+.hotel.detail-page .rooms_sidebar {
+    top: auto;
+    bottom: 0;
+}
+.hotel.detail-page .rooms_sidebar .side-mini-cart {
+    padding-bottom: 1.75rem !important;
+}
+.hotel.detail-page .copyright {
+    padding-bottom: 200px;
+}
+.hotel.detail-page h1 {
+    font-size: 24px !important;
+}
+.hotel.detail-page .start-reservation .date-reserve {
+    padding-bottom: 0;
+}
+.go-path-info .logo {
+    display: none !important;
+}
+.alert-container {
+    margin-top: 150px;
+}
+.ticket-extra {
+    margin: 10px auto;
+}
+.mds-bootstrap-persian-datetime-picker-popover {
+    max-width: 90%;
+}
+.mds-bootstrap-persian-datetime-picker-container {
+    min-width: unset;
+}
+.mds-bootstrap-persian-datetime-picker-container table th,
+.mds-bootstrap-persian-datetime-picker-container table td {
+    padding: 5px !important;
+}
+/* #homepage .home, */
+.home_slider_container {
+    max-height: 20vh;
+}
+#homepage .bilit-search-box {
+    min-height: 174px;
+}
+.header + .home {
+    height: 40vh !important;
+}
+.boxes {
+    margin-top: calc(-20vh + 27px) !important;
+    padding: 0 !important;
+}
+.about-text {
+    text-align: justify;
+}
+.right-box-result.multi-paths .ticket-type {
+    position: absolute;
+    right: 0;
+    top: 15%;
+    writing-mode: tb;
+}
+.right-box-result.multi-paths .ticket-type .head-title {
+    border: 1px solid #ddd;
+    border-right: none;
+    padding: 10px 0;
+    border-radius: 3px 0 0 3px;
+    color: #0DA6E0;
+    font-size: 10px;
+    background-color: #eee;
+}
+.right-box-result.multi-paths .icon-airline {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+}
+/* .right-box-result.multi-paths .flight-path .item-rout {
+    border-bottom: 1px solid #ccc;
+
+}
+.right-box-result.multi-paths .flight-path:last-child .item-rout {
+    border-bottom: 0 none !important;
+} */
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+.overlay,
+.list.results.right-section .overlay,
+#filter_sidebar .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255,255,255,.75);
+    z-index: 9999;
+}
+.overlay.white {
+    background: rgba(255,255,255,.75);
+}
+.overlay.black,
+#filter_sidebar .overlay {
+    background: rgba(0,0,0,.35);
+}
+#filter_sidebar .filter__sidebar__inner {
+    background: #fff;
+    z-index: 99;
+}
+.input-group-btn {
+    width: auto !important;
+}
+.input-group-btn .btn-default {
+    background: #868e96 !important;
+}
+.file-caption.icon-visible .file-caption-name {
+    color: #868e96;
+}
+ul.errors-message {
+    margin-left: 0;
+    margin-right: 20px;
+}
+.account-wrapper .list-group-item i {
+    margin-right: 0;
+}
+.super_container {
+    overflow: unset;
+}
+.fstResultItem.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+.fstResultItem.disabled.fstFocused {
+    background: #afdaff !important;
+}
+.account input[type='radio']:after, 
+.account input[type='checkbox']:after, 
+.account input[type='radio']:checked:after, 
+.account input[type='checkbox']:checked:after {
+    border: 1px solid #999;
+}
+.account input[type='radio']:checked:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: 12px;
+    top: -3px;
+    background: #fc8704;
+    color: #fff;
+    padding-left: 1px;
+    padding-bottom: 1px;
+}
+#searchform-cabin_class {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 .5rem;
+}
+#searchform-cabin_class > div {
+    width: 50%;
+}
+.swal-text {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100%;
+    text-align: right;
+}
+.swal-footer {
+    text-align: left;
+}
+a.btn.disabled, 
+fieldset[disabled] a.btn,
+.disabled {
+    pointer-events: unset;
+    cursor: not-allowed;
+    background-color: #e9ecef !important;
+}
+.search-result .right-section .element-item.disabled {
+    background-color: #fff !important;
+}
+.col-100 {
+    width: 100%;
+    max-width: 100%;
+}
+.fstResultItem {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.fstResults {
+    max-height: 210px;
+}
+.fstElement>select, 
+.fstElement>input {
+    left: auto;
+    right: -99999rem;
+}
+/* jump general extra smal (xs) styles end */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .row-header-wrapper .passengers-list-wrapper {
+        position: absolute;
+        left: 60px;
+        top: 8px;
+    }
+    .right-box-result {
+        padding-right: 3rem !important;
+    }
+    .container.ajax-result-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .field-coupon_code .form-group,
+    .field-coupon_code .form-group .field-error,
+    .field-coupon_code .form-group .field-hint {
+        margin: 0;
+    }
+    .blue .right-box-result-confirm {
+        padding-right: 70px !important;
+    }
+    .right-box-result.multi-paths {
+        padding-right: 0 !important;
+    }
+    .box-result-item .icon {
+        display: flex!important;
+    }
+    .bus-seat-map.confirm .seat-map {
+        min-height: unset;
+    }
+    .bus-seat-map.confirm .seat-map .bus {
+        -webkit-transform: rotate(0);
+           -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+                transform: rotate(0);
+    }
+    .bus-seat-map.confirm .seatCharts-row div.seatCharts-cell {
+      -webkit-transform: rotate(0);
+         -moz-transform: rotate(0);
+          -ms-transform: rotate(0);
+              transform: rotate(0);
+    }
+    .tourism-list .location-item .dash {
+        width: 150px;
+    }
+    .toolbar-days {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+    .fields-swap,
+    #bus_form .fields-swap {
+        left: calc(50% + -16px);
+        top: 3px;
+        /* height: 38px; */
+        -webkit-transform: rotate(0);
+           -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+                transform: rotate(0);
+    }
+    /* .field-flight-origin,
+    .field-bus-origin {
+        padding-left: 15px !important;
+    } */
+    .field-flight-destination .icon_addon .mdi-set,
+    .field-bus-destination .icon_addon .mdi-set {
+        right: 20px;
+        /* padding-right: 15px !important; */
+    }
+    .field-flight-destination .icon_addon .fstToggleBtn,
+    .field-bus-destination .icon_addon .fstToggleBtn {
+        padding-right: 40px;
+    }
+    .field-flight-origin .fstToggleBtn,
+    .field-bus-origin .fstToggleBtn {
+        margin-left: 10px;
+    }
+    .field-bus-origin .fstElement {
+        border-left: 0;
+    }
+    .field-bus-origin .fstControls {
+        width: calc(100% + 15px);
+    }
+    .field-bus-destination .fstControls {
+        width: calc(100% + 15px);
+        right: -14px;
+    }
+    .intlhotelroom-qty-wrapper .fstToggleBtn {
+        width: 96%;
+    }
+    .intlhotelroom-qty-wrapper .fstToggleBtn {
+        width: 90% !important;
+    }
+    .top_bar_content a span {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .hotel.detail-page .title-span {
+        display: inline;
+    }
+    .mds-bootstrap-persian-datetime-picker-popover {
+        max-width: 400px;
+    }
+    .mds-bootstrap-persian-datetime-picker-container {
+        min-width: 300px;
+    }
+    .mds-bootstrap-persian-datetime-picker-container table th,
+    .mds-bootstrap-persian-datetime-picker-container table td {
+        padding: 8px !important;
+    }
+    .header + .home {
+        max-height: 48vh;
+    }
+    .home_slider_container {
+        max-height: 30vh;
+    }
+    .boxes {
+        margin-top: calc(-10vh + 10px) !important;
+    }
+    .boxes .tab-item .title {
+        font-size: 13px !important;
+    }
+    .about-text {
+        padding: 1.5rem;
+    }
+    #intlhotel-check_in_persian {
+        border-left: 0;
+    }
+    #intlhotelroom-qty-wrapper + div {
+        padding-right: 1rem !important;
+    }
+    #intlhotelroom-qty-dropdown {
+        width: 130% !important;
+    }
+}
+/* jump small (sm) styles end */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    /* .logo_container img {
+        width: 140px !important;
+    } */
+    .success-loading .message, 
+    .search-loading .message, 
+    .non-webfare-loading .message {
+        position: absolute;
+    }
+    .item-rout .route-duration {
+        display: inline;
+    }
+    .bus-seat-map .seat-map {
+        min-height: unset;
+    }
+    .seat-map .bus {
+        -webkit-transform: rotate(0);
+           -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+                transform: rotate(0);
+    }
+    .seatCharts-row div.seatCharts-cell {
+      -webkit-transform: rotate(0);
+         -moz-transform: rotate(0);
+          -ms-transform: rotate(0);
+              transform: rotate(0);
+    }
+    #location_services_reserve .checkout-btn {
+        /* padding-top: 0; */
+        border-top: 0!important;
+    }
+    .ticket .ticket-right-box span.ticket-number, 
+    .ticket .right-box-result span.ticket-number {
+        writing-mode: vertical-rl;
+        font-size: 2rem !important;
+    }
+    .ticket .ticket-box-item .icon, 
+    .ticket .box-result-item .icon,
+    .ticket .ticket-box-item .icon img, 
+    .ticket .box-result-item .icon img {
+        width: 85px;
+        height: 85px;
+    }
+    .home2 {
+        height: 115px;
+    }
+    .hotel-item .image-wrapper img {
+        height: 20vh;
+    }
+    .field-flight-origin .fstSingleMode.fstActive .fstControls, 
+    .field-intlhotel-cityhotel .fstSingleMode.fstActive .fstControls {
+        width: 170%;
+        right: -1px;
+        left: auto;
+    }
+    .passengers-qty-btn .fstToggleBtn {
+        width: 79% !important;
+    }
+    .intlhotelroom-qty-wrapper .fstToggleBtn {
+        width: 84% !important;
+    }
+    .field-intlhotel-checkin_checkout_persian, 
+    #intlhotelroom-qty-wrapper + div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .rooms_sidebar {
+        position: static;
+    }
+    .rooms_sidebar .side-mini-cart {
+        padding-bottom: 1.5rem!important;
+    }
+    .rooms_sidebar #hotel_rooms_mini_cart_form h5 {
+        margin-bottom: 1.5rem!important;
+    }
+    .rooms_sidebar #hotel_rooms_mini_cart_form tbody {
+        display: table-row-group;
+    }
+    .domestic-hotel.room-table .table .col-room {
+        width: 25%;
+    }
+    .domestic-hotel.room-table .table .col-capacity {
+        width: 15%;
+    }
+    .domestic-hotel.room-table .table .col-price,
+    .domestic-hotel.room-table .table .col-options {
+        width: 30%;
+    }
+    .domestic-hotel.room-table .block-price span {
+        font-size: 14px;
+    }
+    .internation-hotel.responsive-table, 
+    .domestic-hotel.table-responsive {
+        overflow-x: auto;
+    }
+    .rooms_sidebar .side-mini-cart {
+        padding-top: 1.5rem !important;
+    }
+    .mds-bootstrap-persian-datetime-picker-popover {
+        max-width: unset;
+    }
+    .header + .home {
+        max-height: 60vh;
+    }
+    .home_slider_container {
+        max-height: 40vh;
+    }
+    .boxes {
+        margin-top: 0 !important;
+    }
+    .boxes .tab-item .title {
+        font-size: 14px !important;
+    }
+    #intlhotelroom-qty-dropdown {
+        width: auto !important;
+    }
+    #intlhotelroom-qty-dropdown,
+    #intlhotelroom-qty-dropdown > div {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+/* jump medium (md) styles end */
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .sidebar.sticky-box.minimized {
+        max-height: unset !important;
+    }
+    .toggle-card {
+        display: none !important;
+    }
+    .copyright {
+        margin-bottom: 0;
+    }
+    .ticket .ticket-right-box span.ticket-number, 
+    .ticket .right-box-result span.ticket-number {
+        font-size: 2.5rem !important;
+    }
+    .ticket .ticket-box-item .icon, 
+    .ticket .box-result-item .icon,
+    .ticket .ticket-box-item .icon img, 
+    .ticket .box-result-item .icon img {
+        width: 100px;
+        height: 100px;
+    }
+    .field-flight-origin .fstSingleMode.fstActive .fstControls, 
+    .field-intlhotel-cityhotel .fstSingleMode.fstActive .fstControls {
+        width: 150%;
+    }
+    .passengers-qty-btn .fstToggleBtn {
+        width: 84% !important;
+    }
+    .intlhotelroom-qty-wrapper .fstToggleBtn {
+        width: 90% !important;
+    }
+    .home3 {
+        height: 50vh;
+    }
+    .contact-us .home3 {
+        background-image: url(../images/contact-us.jpg) !important;
+    }
+    .terms .home3 {
+        background-image: url(../images/rule.jpg) !important;
+    }
+    .account .home3 {
+        background-image: url(../images/Account-Banner.png) !important;
+    }
+    .home3 .banner_text_inner {
+        display: block;
+    }
+    .account .home3 {
+        height: 50vh;
+    }
+    .go-path-info .logo {
+        display: flex !important;
+    }
+    .boxes .tab-item .title {
+        font-size: 15px !important;
+    }
+    .about-text {
+        text-align: right;
+        padding: 2rem;
+    }
+    .modal-dialog {
+        max-width: 800px;
+    }
+}
+/* jump large (lg) styles end */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .left-box-hotel {
+        border-top: 0;
+        border-right: 1px dashed #e0e4e8;
+    }
+    .hotel-item .image-wrapper img {
+        height: 17vh;
+    }
+    .hotel-item .ribbon-top-left, 
+    .search-result .right-section .hotel-item {
+        -webkit-border-top-left-radius: 15px;
+        -moz-border-top-left-radius: 15px;
+        border-top-left-radius: 15px;
+    }
+    .field-flight-origin .fstSingleMode.fstActive .fstControls, 
+    .field-intlhotel-cityhotel .fstSingleMode.fstActive .fstControls {
+        width: 130%;
+    }
+    .domestic-hotel.room-table .block-price span {
+        font-size: 16px;
+    }
+    .header + .home {
+        max-height: 80vh;
+        height: 50vh !important;
+    }
+    .home_slider_container {
+        max-height: 60vh;
+    }
+    
+}
+/* jump extra large (xl) styles end */
+
+
+
+/**
+ * Responsive mobile compatibel table:
+ *     https://codepen.io/team/css-tricks/pen/wXgJww?editors=1100
+ *     https://css-tricks.com/responsive-data-tables/
+ *
+ */
+/**
+ * Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+ */
+@media
+only screen 
+and (max-width: 767.98px)  {
+
+    /* Force table to not be like tables anymore */
+    table.responsive-table, 
+    table.responsive-table thead, 
+    table.responsive-table tbody, 
+    table.responsive-table tr, 
+    table.responsive-table th, 
+    table.responsive-table td {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    table.responsive-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    table.responsive-table tr {
+        margin: 0 0 1rem 0;
+        border: 1px solid #ccc;
+    }
+
+    table.responsive-table tr:nth-child(even) {
+        background: #fff;
+    }
+    table.responsive-table tr:nth-child(odd) {
+        background: #fcfcfc;
+    }
+
+    table.responsive-table th,
+    table.responsive-table td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    table.responsive-table td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 0;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    table.responsive-table .remove {
+        display: none;
+    }
+
+    /*
+    Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+    */
+}
+/* >>> Responsive mobile compatibel table */

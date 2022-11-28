@@ -1,0 +1,20 @@
+
+<div class="col-md-6 no-left-pad col-sm-12 align-items-stretch dashboard-wallet-info">
+  <div class="box-info ">
+    <div class="d-flex flex-row justify-content-between p-2 align-items-center bd-bottom">
+      <span class=""><?= __('wallet', 'Wallet') ?></span> <i class="fas fa-wallet blue"></i>
+    </div>
+    <div class="wallet-content d-flex flex-column">
+      <div class="d-flex flex-row justify-content-between p-3 mt-3">
+        <h5><?= __('wallet', 'Credit Amount') ?></h5>
+          <?php if (!tools()->isGuest()): ?>
+          <h5><?= tools()->formatRial((float) tools()->getUser()->identity->credit_amount) ?></h5>
+          <?php endif; ?>
+      </div>
+      <hr />
+      <div class="mt-1">
+        <?= $this->render('@app/modules/Codnitive/Wallet/views/templates/account/charge.form.phtml', ['formModel' => $formModel]) ?>
+      </div>
+    </div>
+  </div>
+</div>

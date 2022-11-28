@@ -1,0 +1,29 @@
+<div class="home3"></div>
+<section class="term-policy_area mt-5 " style="color:#000;">
+  <div class="container">
+    <!--Accordion wrapper-->
+    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+        <?= $this->render('general/card.phtml') ?>
+        <?= $this->render('1/card.phtml') ?>
+        <?= $this->render('2/card.phtml') ?>
+        <?= $this->render('3/card.phtml') ?>
+        <?= $this->render('4/card.phtml') ?>
+        <?= $this->render('5/card.phtml') ?>
+    </div>
+    <!-- Accordion wrapper -->
+  </div>
+</section>
+<script type="text/javascript">
+ $(document).ready(function () {
+     var target = $('.terms .collapse');
+     target.on('hide.bs.collapse', function () {
+    var header = $(this).attr('aria-labelledby');
+    $(`#${header} i`).toggleClass('fa-angle-up').toggleClass('fa-angle-down');
+     });
+     target.on('show.bs.collapse', function () {
+    var header = $(this).attr('aria-labelledby');
+    $(`#${header} i`).toggleClass('fa-angle-up').toggleClass('fa-angle-down');
+  })
+ });
+</script>
+        

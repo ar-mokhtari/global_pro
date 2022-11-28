@@ -1,0 +1,45 @@
+<!-- About -->
+<div class="about">
+    <div class="container">
+        <div class="row row-lg-eq-height">
+            <div class="col">
+                <div class="text-center mb-5">
+                    <h2 class=""><img src="<?= tools()->getImageUrl('logo_blue.png') ?>" alt="Bilit.com"></h2>
+                </div>
+            </div>
+            <div class="about-text text-center mb-5">
+                <p><?= __('template', 'Bilit.com is one of brands of Rayka Tejarat Rah Abrisham company.') ?></p>
+            </div>
+        </div>
+
+        <div class="row oval text-center d-flex flex-row align-items-center justify-content-around mt-5">
+            <div class="col-md-3 col-sm-6 service_col d-flex justify-content-around ">
+                <div class="service text-center trans_200">
+                    <div class="service_icon flex-fill d-flex align-items-center justify-content-center
+                            "><span
+                            class="icon-ticket"></span></div>
+                    <div class="service_title trans_200"><?= __('template', 'Search Ticket') ?></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 service_col">
+                <div class="service text-center trans_200">
+                    <div class="service_icon flex-fill d-flex align-items-center justify-content-center"><span class="icon-ticket-select"></span></div>
+                    <div class="service_title trans_200"><?= __('template', 'Choose Ticket') ?></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 service_col">
+                <div class="service text-center trans_200">
+                    <div class="service_icon flex-fill d-flex align-items-center justify-content-center"><span class="icon-information"></span></div>
+                    <div class="service_title trans_200"><?= __('template', 'Fill Information') ?></div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 service_col">
+                <div class="service text-center trans_200">
+                    <div class="service_icon flex-fill d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></div>
+                    <div class="service_title trans_200"><?= __('template', 'Buy and Pay') ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

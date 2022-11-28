@@ -1,0 +1,23 @@
+<?php if ($success = tools()->getFlash('success')): ?>
+    <div class="container alert-container my-3">
+        <div class="alert alert-success"><span class="fa fa-check"></span> <?= $success ?></div>
+    </div>
+<?php endif; ?>
+
+<?php if ($info = tools()->getFlash('info')): ?>
+    <div class="container alert-container my-3">
+        <div class="alert alert-info"><span class="fa fa-exclamation"></span> <?= $info ?></div>
+    </div>
+<?php endif; ?>
+
+<?php //if($warning = tools()->getFlash('warning')): ?>
+<div class="container alert-container my-3">
+    <div class="alert alert-warning"><span class="fa fa-exclamation-triangle"></span> <?= @$warning ?></div>
+</div>
+<?php //endif; ?>
+
+<?php if ($danger = tools()->getFlash('danger')): ?>
+    <div class="container alert-container my-3">
+        <div class="alert alert-danger"><span class="fa fa-times"></span> <?= $danger ?></div>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,71 @@
+<?php if (isset($toolbar) && !empty($toolbar) && !isset($data['error'])): ?>
+<?= $this->render(
+    '@app/modules/Codnitive/Template/views/templates/search/result/_toolbar.phtml', 
+    ['toolbar' => $toolbar, 'addDepartingSort' => isset($addDepartingSort) ? $addDepartingSort : false]
+); ?>
+<?php /*<?= $this->render('@app/modules/Codnitive/Template/views/templates/search/result/_isotopeJS.phtml'); ?>*/ ?>
+<?php endif ?>
+<div class="clearfix"></div>
+
+<section id="search_list" class="my-4">
+    <div class="container">
+        <div class="row m-lg-0">
+        <?php if (empty($data)): ?>
+            <div class="col-12 mt-5 text-center">
+                <?= __('template', 'Unfotunalty no result found for your search, please change your search parameters.') ?>
+            </div>
+        <?php elseif (isset($data['error'])): ?>
+            <div class="col-12 mt-5 text-center">
+                <?= __('template', $data['error']) ?>
+            </div>
+        <?php else: ?>
+            <?php if (isset($filterBlock) && !empty($filterBlock)): ?>
+            <div id="filter_sidebar" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 filter sidebar d-flex flex-column px-3 px-lg-0 mt-lg-3">
+                <div class="filter__sidebar__inner">
+                    <?= $this->render(
+                        '@app/modules/Codnitive/Template/views/templates/search/result/_filter.phtml', 
+                        ['filterBlock' =>  $filterBlock]
+                    ); ?>
+                    <div class="overlay hide"></div>
+                </div>
+                <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#filter_sidebar').stickySidebar({
+                        containerSelector: '#search_list',
+                        innerWrapperSelector: '.filter__sidebar__inner',
+                        topSpacing: 75,
+                        // bottomSpacing: 0,
+                        resizeSensor: true,
+                        minWidth: 991
+                    });
+                });
+                </script>
+            </div>
+            <div class="sidebar-background"></div>
+            <div class="sidebar_toggle_btn">
+                <i class="fa fa-filter mr-2 ml-0 d-block"></i>
+                <span class="d-block"><?= __('template', 'Filter') ?></span>
+            </div>
+            <?php endif ?>
+            <!-----------------right-section------------------------>
+            <?php if (isset($filterBlock) && !empty($filterBlock)): ?>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 px-md-0 pl-md-3 list results right-section">
+            <?php else: ?>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 list results right-section p-0">
+            <?php endif ?>
+                <div class="still-searching top col-12 text-center my-3 hide">
+                    <i class="fa fa-sync-alt rotating fast"></i>
+                    <span class="count">-</span> <?= __('template', 'Items found, still we are searching for more result...') ?>
+                </div>
+                <?= $resultTemplate ?>
+                <div class="overlay hide"></div>
+            </div>
+        <?php endif; ?>
+        
+        <?php unset($data['error']) ?>
+        <script type="text/javascript">
+            bilit.updateSearchResultCount(<?= count($data) ?>);
+        </script>
+        </div>
+    </div>
+</section>

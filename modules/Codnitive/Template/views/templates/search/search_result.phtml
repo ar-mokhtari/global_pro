@@ -1,0 +1,19 @@
+<div class="home2"></div>
+<?= $breadcrumbs ?>
+<?= $infoBlock ?>
+
+<div class="clearfix"></div>
+<section class="mb-0 mt-2">
+    <div class="container <?= $moduleId ?>-list ajax-result-wrapper">
+        <div class="search-loading p-0">
+            <img class="loading-animation pt-4" src="<?= tools()->getImageUrl($loadingGif) ?>"/>
+            <div class="message"><?= $searchingPhrase ?></div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function () {
+            <?= $moduleId ?>.search('<?= tools()->getUrl("$moduleId/ajax/searchResult") ?>');
+        });
+        </script>
+    </div>
+</section>
+<div class="clear"></div>

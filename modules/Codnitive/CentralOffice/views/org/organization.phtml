@@ -1,0 +1,291 @@
+<?php
+
+use kartik\grid\GridView;
+use liyunfang\contextmenu\SerialColumn;
+use yii\widgets\Pjax;
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\modules\Codnitive\CentralOffice\models\coding\Coding */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+$this->title = __('centraloffice', 'Organization');
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<?php
+require 'modal/org_modal.phtml';
+?>
+<?php
+
+$script = <<<JS
+document.title = " $this->title ";
+$(".org_modal_closed").click(function() {
+    $("#org_modal_box").empty();
+})
+JS;
+$this->registerJs($script);
+?>
+<div class="org-index">
+    <?php Pjax::begin(['id' => 'org-index', 'timeout' => false]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php
+    Yii::$app->params['bsVersion'] = '3';
+    ?>
+    <?php
+    $buttonText = __('core', 'Reset Filter');
+    $url = '/' . app()->request->pathInfo;
+    $resetFilterButton = <<<BTN
+        <a style="margin: 0.4rem 10px" class="pull-left" href="$url"><span class="btn btn-outline">$buttonText</span></a>
+
+BTN;
+    ?>
+    <?= /** @noinspection PhpUnhandledExceptionInspection */
+    GridView::widget([
+        'id' => 'db_grid',
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+        'hover' => true,
+        'responsive' => true,
+        'resizableColumns' => true,
+        'persistResize' => true,
+        'pjax' => true,
+        'pager' => [
+            'firstPageLabel' => 'اولین',
+            'lastPageLabel' => 'آخرین',
+            'nextPageLabel' => 'صفحه بعد',
+            'prevPageLabel' => 'صفحه قبل'
+        ],
+//        'layout' => '\n{summary}\n{pager}',
+        'export' => [
+            'fontAwesome' => true,
+            'icon' => '',
+            'label' => __('centraloffice', 'Export to'),
+            'menuOptions' => ['class' => 'dropdown-menu dropdown-menu-left'],
+        ],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'fa fa-arrows',
+                'label' => __('centraloffice', 'Full Page'),
+//                'class' => '',
+                'title' => __('centraloffice', 'Full Page Show'),
+            ],
+            'page' => [
+                'icon' => 'fa fa-clone',
+                'label' => __('centraloffice', 'Pagination'),
+//                'class' => '',
+                'title' => __('centraloffice', 'Pagination Show'),
+            ],
+        ],
+        'toggleDataContainer' => ['class' => 'btn-group-sm'],
+        'exportContainer' => ['class' => 'btn-group-sm float-left'],
+        'showPageSummary' => true,
+        'resizeStorageKey' => Yii::$app->user->id . '-' . date("m"),
+        'options' => [
+            'id' => 'grid_view',
+        ],
+        'rowOptions' => function ($model, $key, $index, $gird) {
+            $contextMenuId = $gird->columns[0]->contextMenuId;
+            return ['data' => ['toggle' => 'context', 'target' => "#" . $contextMenuId]];
+        },
+        'columns' => [
+            [
+                'class' => SerialColumn::className(),
+                'contextMenu' => true,
+                'template' => '{add_sub_jobs}{edit_job}{user_job}{delete_org}',
+                'buttons' => [
+                    'add_sub_jobs' => function ($url, $model) {
+                        return '<li  data-id = "' . $model->id . '" class="add_sub_jobs">
+                                <i class="fa fa-file"></i>
+                                  اضافه کرن زیر مجموعه شغلی
+                                </li>' . PHP_EOL;
+                    }
+                    ,
+                    'edit_job' => function ($url, $model) {
+                        return '<li  data-id = "' . $model->id . '" class="edit_job">
+                                <i class="fa fa-edit"></i>
+                                 ویرایش
+                                 </li>' . PHP_EOL;
+                    }
+                    ,
+                    'user_job' => function ($url, $model) {
+                        if (0 == 0) {
+                            return '<li data-id = "' . $model->id . '" 
+                                        data-name = "' . $model->name . '" 
+                                        class="person_job">
+                                <i class="fa fa-arrow-left"></i>
+                                 انتصاب | تودیع | پرسنل
+                                 </li>' . PHP_EOL;
+                        } else {
+                            return '<li data-name = "' . $model->name . '"  
+                                        style="cursor: not-allowed;direction: rtl;font-size:10px;color: darkgrey">
+                                    <i class="fa fa-arrow-left"></i>
+                                     انتصاب | تودیع | پرسنل
+                                      </li>' . PHP_EOL;
+                        }
+                    }
+                    ,
+                    'delete_org' => function ($url, $model) {
+                        if (tools()->isAdmin()) {
+                            return '<li class="divider"></li>
+                                    <li   data-id = "' . $model->id . '" class="delete_org">
+                                    <i class="fa fa-remove"></i>
+                                     ' . __('account', 'Delete_Organization') . '
+                                     </li>' . PHP_EOL;
+                        }
+                    }
+                ],
+            ],
+            [
+                'attribute' => 'id',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+                'format' => ['decimal', 0],
+            ],
+            [
+                'attribute' => 'code',
+                'hAlign' => 'center',
+                'pageSummary' => true,
+                'pageSummaryFunc' => 'f_count',
+            ],
+            [
+                'attribute' => 'name',
+                'hAlign' => 'right',
+                'vAlign' => 'middle',
+                'width' => '45%',
+                'noWrap' => true,
+                'contentOptions' => function ($model) {
+                    switch ($model->level) {
+                        case 0 :
+                            return [
+                                'style' => '
+                                    font-size: 9.5pt!important;
+                                    font-weight: bold;
+                                    ',
+                            ];
+                            break;
+                        case 1:
+                            return [
+                                'style' => '
+                                    font-size: 8.5pt!important;
+                                    font-weight: normal;
+                                    ',
+                            ];
+                            break;
+                    }
+                },
+            ],
+            [
+                'attribute' => 'parent_name',
+                'hAlign' => 'center',
+                'width' => '3%',
+                'noWrap' => true,
+            ],
+            'user_create',
+            [
+                'attribute' => 'make_date',
+                'value' => function ($model) {
+                    $dateParts = explode(' ', tools()->getFormattedDate($model->make_date, 'Y-m-d H:i'));
+                    return str_replace('-', '/', (new \app\modules\Codnitive\Calendar\models\Persian())->getDate($dateParts[0]));
+                }
+            ],
+            ['attribute' => 'active', 'noWrap' => true],
+        ],
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => __('centraloffice', 'Organization'),
+        ],
+        'panelTemplate' => '{panelHeading}{items}{panelFooter}',
+        'panelHeadingTemplate' => '
+                    {title}<span style="float: left;font-size: 8px;">{export}</span>
+                    <hr style="border-color: #ffffff ;box-shadow: 0 0 2px deepskyblue, 0 0 2px lightblue ;margin: 17px 0 0 0">
+                    <div class="row">
+                    <style>button{margin: 5px 10px 0 0;padding: 4px 5px}</style>
+                        <button id="new_org" style="font-size: 8pt !important;" class="btn btn-default">
+                            ' . __('centraloffice', 'New Org') . '
+                        </button> 
+                        <div class="group pull-left" title="
+                        ' . __('account', 'Reset Search') . '
+                        "> 
+                            ' . $resetFilterButton . '  
+                        </div>                 
+                    </div>
+                    ',
+        'panelFooterTemplate' =>
+            '{pager}{summary}{toggleData}',
+    ]); ?>
+
+    <?php
+    $DelOrg = Yii::$app->urlManager->createUrl(['centraloffice/org/delorg']);
+    $AddSubOrg = Yii::$app->urlManager->createUrl(['centraloffice/org/addorg']);
+    $EditOrg = Yii::$app->urlManager->createUrl(['centraloffice/org/editorg']);
+    $PersonOrg = Yii::$app->urlManager->createUrl(['centraloffice/org/personorg']);
+    //---Translate alert
+    $alert_title = __('account', 'Warning');
+    $alert_text = __('account', 'Are you sure to do this?');
+    $alert_after_action = __('account', 'Done');
+    $script = <<<JS
+    $('.delete_org').click(function() {
+        var id = $(this).data('id');
+        Swal.fire(before_del, 
+        ).then(result => {
+            if (result.value) {
+                NProgress.start();
+                $.post('$DelOrg',{id:id},function(data) {
+                    $.pjax.reload({container:'#org-index',async:false});
+                    Swal.fire(after_del);
+                    NProgress.done();
+                });
+            } else {}
+        });
+    });
+    $('.person_job').click(function() {
+        NProgress.start();
+        var id = $(this).data('id'),name = $(this).data('name');
+        $.post('$PersonOrg',{id:id,name:name},function(data) {
+            $("#org_modal").modal('show').find("#org_modal_box").html(data);
+            NProgress.done();
+        });
+    });
+    $('.add_sub_jobs').click(function() {
+        let modal_target = $("#org_modal");  
+        NProgress.start();
+        var id = $(this).data('id');
+        $.post('$AddSubOrg',{id:id},function(data) {
+            modal_target.find('.modal-header').find('h5').text('زیرگروه واحد سازمانی جدید');
+            modal_target.find('.modal-dialog').addClass('');
+            modal_target.modal('show').find("#org_modal_box").html(data);
+            NProgress.done();
+        });
+    });
+    function org_update(tag){
+        NProgress.start();
+        var id = $(tag).data('key') !== undefined ? $(tag).data('key') : $(tag).data('id') ;
+        $.post('$EditOrg',{id:id},function(data) {
+            $("#org_modal").modal('show').find("#org_modal_box").html(data);
+                var searchInput = $('#vwcoding-name');
+                var strLength = searchInput.val().length * 2;
+                searchInput.focus();
+                searchInput[0].setSelectionRange(strLength, strLength);            
+            NProgress.done();
+        });        
+    }
+    $('.edit_job').click(function() {
+        org_update(this);
+    });
+    $('#grid_view').find('table tbody tr').dblclick(function() {
+        org_update(this);
+    });
+    $('#new_org').click(function() {
+        let modal_target = $("#org_modal");  
+        NProgress.start();
+        $.post('$AddSubOrg',{id:null},function(data) {
+            modal_target.find('.modal-header').find('h5').text('واحد سازمانی جدید');
+            modal_target.find('.modal-dialog').addClass('');
+            modal_target.modal('show').find("#org_modal_box").html(data);
+            NProgress.done();
+        });      
+    })
+JS;
+    $this->registerJs($script);
+    ?>
+    <?php Pjax::end(); ?>
+</div>

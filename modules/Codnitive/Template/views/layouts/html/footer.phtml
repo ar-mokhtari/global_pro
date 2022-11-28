@@ -1,0 +1,17 @@
+
+<?php if (tools()->isHomePage()): ?>
+<?= $this->render('footer/contact_home.phtml') ?>
+<?php else: ?>
+<?= $this->render('footer/contact.phtml') ?>
+<?php endif; ?>
+
+<footer class="footer">
+    <div class="footer_container">
+        <div class="container">
+        <?php /*<?= $this->render('footer/menu.phtml') ?>*/ ?>
+        <?= $this->render('footer/links.phtml') ?>
+        </div>
+    </div>
+    <?= $this->render('footer/copyright.phtml') ?>
+</footer>
+<?= $this->render('@app/modules/Codnitive/Template/views/templates/scroll_to_top.phtml') ?>

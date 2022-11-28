@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.onscroll = function() {
+            stickyActions();
+        };
+        var actions = $("#sticky-action-btns");
+        var sticky = actions.offset().top;
+        stickyActions();
+        function stickyActions() {
+            window.pageYOffset >= sticky - 56 
+                ? actions.addClass("sticky-nov sticky-actions")
+                : actions.removeClass("sticky-nov sticky-actions");
+        }
+    });
+</script>
+<div id="sticky-action-btns" class="action-btns px-3">
+    <div class="d-flex flex-row justify-content-end align-items-center">
+        <?= $block->html()->submitButton(
+            __('admin', 'Save'), 
+            [
+                'class' => 'btn btn-primary mr-auto',
+                'id' => 'price_rule-submit',
+            ]
+        ) ?>
+        <?php if ($block->getModel()->id): ?>
+            <?php $confirmMessage = __('template', 'Are you sure?'); ?>
+            <a class="btn btn-danger btn-sm fz-12 px-3 mx-2" 
+                href="<?= $block->getDeleteUrl() ?>"
+                onclick="bilit.confirm(()=>{window.location.href = $(this).prop('href')}, {title: '<?= $confirmMessage ?>'}); return false;">
+                <?= __('admin', 'Delete') ?>
+            </a>
+        <?php endif ?>
+        <a class="btn btn-light btn-sm fz-12 px-3" href="<?= $block->getBackUrl() ?>">
+            <?= __('admin', 'Back') ?>
+        </a>
+    </div>
+</div>

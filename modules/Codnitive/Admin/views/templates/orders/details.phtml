@@ -1,0 +1,124 @@
+<?php
+use app\modules\Codnitive\Calendar\models\Persian;
+
+$invoiceNumber = $order->order_number;
+$this->title = __('sales', 'Invoice #{invoice_number}', ['invoice_number' => $invoiceNumber]);
+$this->params['breadcrumbs'][10] = $this->title;
+
+$user    = \dektrium\user\models\User::findIdentity($order->customer_id);
+$billing = $order->billing_data;
+if (is_string($billing)) {
+    $billing = \yii\helpers\Json::decode($billing);
+}
+
+$items      = $order->getItems();
+$grandTotal = $order->getGrandTotal($items);
+
+$dateParts = explode(' ', tools()->getFormattedDate($order->order_date, 'Y-m-d H:i'));
+$persianDate = str_replace('-', '/', (new Persian)->getDate($dateParts[0]));
+
+?>
+
+<div class="row my-order invoice">
+    <div class="col-lg-12">
+        <div class="card px-2">
+            <div class="card-body">
+                <div class="row">
+                <h6 class="col-4 mt-4"><?= __('sales', 'Status:') ?> <?= $order->status_label ?></h6>
+                <h3 class="col-8 text-right mt-4"><?= __('sales', 'Invoice&nbsp;&nbsp;#') ?> <?= $invoiceNumber ?></h3>
+                <p class="col-12 text-right mb-5"><?= __('sales', 'Invoice Date:') ?> <?= $persianDate ?>&nbsp;<?= $dateParts[1] ?></p>
+                <hr>
+                </div>
+                <div class="container-fluid d-flex justify-content-between">
+                <div class="col-lg-3 pl-0">
+                    <p class="mt-5 mb-2"><b><?= $user->fullname ?></b></p>
+                    <?= $user->address ?><br>
+                    <?= $user->location ?>
+                    </p>
+                </div>
+                <div class="col-lg-3 pr-0">
+                    <p class="mt-5 mb-2 text-right">
+                        <b><?= __('sales', 'Invoice to:') ?> <?= $billing['firstname'] . ' ' . $billing['lastname'] ?></b><br>
+                        <?= $billing['cellphone'] ?><br>
+                        <?= $billing['email'] ?>
+                    </p>
+                    <p class="text-right">
+                    <?= $billing['city'] ?><br>
+                    <?= $billing['address'] ?><br>
+                    </p>
+                            
+                    <?php if(!empty($billing['extra_data']) && !empty($billing['template'])): ?>
+                    <?= $this->render($billing['template'], ['data' => $billing['extra_data']]) ?>
+                    <?php endif; ?>
+                </div>
+                </div>
+                <div class="container-fluid d-flex justify-content-between">
+                <div class="col-lg-12 pl-0">
+                    <?= $this->render('@app/modules/Codnitive/Sales/views/transaction.phtml', ['transaction' => $order->getOrderTransactions(), 'showMoreDetails' => true]) ?>
+                </div>
+                </div>
+
+                <?= $this->render('@app/modules/Codnitive/Sales/views/account/order/items.php', ['items' => $items]); ?>
+
+                <div class="container-fluid mt-5 w-100">
+                    <h4 class="text-right mb-5"><?= __('sales', 'Total:') ?> <?= tools()->formatRial($grandTotal) ?></h4>
+                </div>
+                <?php /*<div class="container-fluid w-100">
+                    <a href="#" class="btn btn-primary float-right mt-4 ml-2"><i class="mdi mdi-printer mr-1"></i>Print</a>
+                    <a href="#" class="btn btn-success float-right mt-4"><i class="mdi mdi-telegram mr-1"></i>Send Invoice</a>
+                </div>*/ ?>
+                
+                <div class="row pt-5">
+                    <?php if (!empty($order->payment_info)): ?>
+                        <div id="payment_info" class="col-6">
+                            <h4 class="text-center p-3 bg-light mb-0 border"><?= __('admin', 'Payment Info') ?></h4>
+                            <table class="payment-info col-12 table">
+                                <tbody>
+                                    <?php foreach ($order->payment_info as $field => $value): ?>
+                                    <tr class="<?= $field ?>">
+                                        <th class="border bg-light force-text-right"><?= __('admin', $field) ?></th>
+                                        <td><?= $value ?></td>
+                                    </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif ?>
+
+                    <?php if (!empty($order->booking_result)): ?>
+                        <div id="booking_result" class="col-6">
+                            <h4 class="text-center p-3 bg-light mb-0 border"><?= __('admin', 'Booking Result') ?></h4>
+                            <table class="booking-result col-12 table">
+                                <tbody>
+                                    <?php foreach ($order->booking_result as $field => $value): ?>
+                                    <tr class="<?= $field ?>">
+                                        <th class="border bg-light force-text-right"><?= __('admin', $field) ?></th>
+                                        <td>
+                                            <?php if (is_array($value)): ?>
+                                                <table class="bookin-result-info col-12 table mb-0">
+                                                    <tbody>
+                                                        <?php foreach ($value as $key => $val): ?>
+                                                                    <tr class="<?= $key ?>">
+                                                                        <th width="50%"><?= __('admin', $key) ?></th>
+                                                                        <td width="50%">
+                                                                            <?= is_array($val) ? print_r($val) : $val ?>
+                                                                        </td>
+                                                                    </tr>
+                                                        <?php endforeach ?>
+                                                    </tbody>
+                                                </table>
+                                            <?php else: ?>
+                                                <?= $value ?>
+                                            <?php endif ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

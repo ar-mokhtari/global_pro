@@ -1,0 +1,15 @@
+<div id="http">
+    <div class="error">
+        <div class="error-code">
+            <h3><?= $name ?></h3>
+            <h1>
+                <?php foreach (str_split($statusCode) as $digit): ?>
+                <span><?= $digit ?></span>
+                <?php endforeach ?>
+            </h1>
+        </div>
+        <h2><?= $message ?></h2>
+        <a href="<?= tools()->getBaseUrl() ?>">Back Home</a>
+        <small class="font-en"><i><?= tools()->getNow() ?></i></small>
+    </div>
+</div>

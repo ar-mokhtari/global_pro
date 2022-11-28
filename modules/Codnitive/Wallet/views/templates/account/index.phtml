@@ -1,0 +1,13 @@
+
+<div class="card-body-account">
+    <h4><?= __('wallet', 'Wallet') ?></h4>
+    <div class="right-content">
+        <div class="mt-4">
+            <div class="d-flex flex-column">
+                <?= $this->render('charge_block.phtml', ['formModel' => $formModel]) ?>
+                <?= $this->render('transaction/grid.phtml', ['transactionGrid' => $transactionGrid]) ?>
+            </div>
+            <div class="clearfix "></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<canvas id="apis_balance"></canvas>
+<script>
+$(document).ready(function () {
+	var apisBalanceCtx = document.getElementById('apis_balance').getContext('2d');
+	var apisBalanceData = {
+		labels: [<?= $block->getChartLables() ?>],
+		datasets: [
+			{
+				// label: 'My First dataset',
+				// backgroundColor: '#343a40',
+				// borderColor: '#000',
+				backgroundColor: [
+					'#024c96', // parto
+					'#ff515b', // eghamat
+					'#007FD5', // insurance
+					'#3498db', // safar
+					'#304352', // nira
+					'#00c9e0', // atishahr
+				],
+				data: [<?= $block->getChartValues() ?>],
+			}
+		]
+	};
+	var options = {
+		title: '<?= __('admin', 'API panels balance') ?>'
+	};
+	var apidBalanceChart = new charts;
+	apidBalanceChart.simpleBarChart(apisBalanceCtx, apisBalanceData, options, true);
+});
+</script>

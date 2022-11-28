@@ -1,0 +1,13 @@
+<!-- Example DataTables Card-->
+<div class="card my-5 recent-received-orders orders-grid">
+    <div class="d-flex flex-row justify-content-between p-3 align-items-center bd-bottom">
+        <span class=""> <?= __('admin', 'Recent Orders') ?></span>
+        <i class="fas fa-list"></i>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive py-4 px-2 orders-grid-table">
+            <?= $ordersGrid->toHtml(); ?>
+        </div>
+        <a class="float-right d-inline-block" href="<?= tools()->getUrl('admin/orders') ?>"> <?= __('account', 'View All Orders') ?></a>
+    </div>
+</div>

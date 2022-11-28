@@ -1,0 +1,54 @@
+<?php 
+$dataSteps = $data['step'];
+$minData = $data['min'];
+$maxData = $data['max'];
+$collapsible = $data['collapsible'];
+?>
+
+<?php if (($maxData - $minData) > (2 * $dataSteps)): ?>
+<div id="<?= $filterName ?>-block" class="block <?= $filterName ?>-block-wrapper">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a <?php if($collapsible): ?>
+                    data-toggle="collapse" href="#collapse_<?= $filterName ?>" 
+                    <?php if($data['expanded']): ?>aria-expanded="true"<?php endif ?> 
+                    <?php if(!$data['expanded']): ?>class="collapsed"<?php endif ?>
+                <?php endif ?>>
+                <?= $data['title'] ?>
+                <?php if($collapsible): ?><i class="indicator fa fa-caret-down"></i><?php endif ?>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse_<?= $filterName ?>" 
+        class="panel-collapse 
+            <?= $filterName ?>-block 
+            range-slider-wrapper
+            <?php if($collapsible): ?> collapse
+                <?php if($data['expanded']): ?> show<?php endif ?>
+            <?php endif ?>
+        "
+    >
+        <div id="<?= $filterName ?>_range_slider" class="<?= $filterName ?>-filter-range range_slider" data-filter-group="<?= $filterName ?>">
+        </div>
+        <input type="text" min="<?= $minData ?>" max="<?= $maxData - $dataSteps?>" oninput="validity.valid||(value='<?= $minData ?>');" value="<?= $data['min_value'] ?? $minData ?>" id="min_<?= $filterName ?>" class="min-field <?= $filterName ?>-range-field slider-range-field"<?php if ($data['disabled']): ?> disabled="disabled"<?php endif; ?>/>
+        <input type="text" min="<?= $minData + $dataSteps ?>" max="<?= $maxData ?>" oninput="validity.valid||(value='<?= $maxData ?>');" value="<?= $data['max_value'] ?? $maxData ?>" id="max_<?= $filterName ?>" class="max-field <?= $filterName ?>-range-field slider-range-field"<?php if ($data['disabled']): ?> disabled="disabled"<?php endif; ?>/>
+        <script type="text/javascript">
+            var filterRange = new codnitive.rangePicker();
+            filterRange.init('#<?= $filterName ?>_range_slider', <?= $maxData ?>, <?= $minData ?>, <?= $dataSteps ?>, <?= $data['format_hour'] ?>);
+        </script>
+    </div>
+</div>
+
+<script type="text/javascript">
+    if (!(searchResultList instanceof codnitive.isotope)) {
+        searchResultList = new codnitive.isotope();
+        var searchResultListSort = searchResultList.init('.list.results.right-section', {});
+            searchResultListSort = searchResultList.initFilter(searchResultListSort);
+    }
+    searchResultList.rangeFilters = {
+        '<?= $filterName ?>': {'min': <?= $minData ?>, 'max': <?= $maxData ?>},
+        '<?= $filterName ?>_default': {'min': <?= $minData ?>, 'max': <?= $maxData ?>}
+    };
+    searchResultList.filterRange(searchResultListSort, '#<?= $filterName ?>_range_slider');
+</script>
+<?php endif ?>

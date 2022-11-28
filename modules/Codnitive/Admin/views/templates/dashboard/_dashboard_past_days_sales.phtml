@@ -1,0 +1,32 @@
+<canvas id="past_days_orders"></canvas>
+<script>
+$(document).ready(function () {
+	var todayOrdersCtx = document.getElementById('past_days_orders').getContext('2d');
+	var todayOrdersData = {
+		labels: [<?= $block->loadSales()->getChartLables() ?>],
+		datasets: [{
+			label: '<?= __('admin', 'Total Completed Orders') ?>',
+			backgroundColor: '#fec933',
+			borderColor: '#000',
+			lineTension: .05,
+			data: [<?= $block->loadSales(\app\modules\Codnitive\Sales\models\System\Source\OrderStatus::COMPLETED_ID)->getChartValues() ?>]
+		},
+		{
+			label: '<?= __('admin', 'Total Orders') ?>',
+			backgroundColor: '#343a40',
+			borderColor: '#000',
+			lineTension: .05,
+			data: [<?= $block->loadSales()->getChartValues() ?>],
+		}]
+	};
+	var options = {
+		title: '<?= __('admin', 'Past {days} Days Sales', ['days' => $block->getDays()]) ?>',
+		scales: {
+			xAxesLabel: '<?= __('admin', 'Date') ?>',
+			yAxesLabel: '<?= __('admin', 'Sale') ?>'
+		}
+	};
+	var todayOrdersChart = new charts;
+	todayOrdersChart.simpleLineChart(todayOrdersCtx, todayOrdersData, options, true);
+});
+</script>

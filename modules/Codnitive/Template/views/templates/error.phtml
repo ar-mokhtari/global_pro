@@ -1,0 +1,43 @@
+<div class="pege-error parallax">
+    <div class="sky-bg"></div>
+    <div class="wave-7"></div>
+    <div class="wave-6"></div>
+    <a class="wave-island" href="<?= tools()->getBaseUrl() ?>">
+        <img src="http://res.cloudinary.com/andrewhani/image/upload/v1524501929/404/island.svg" alt="Island">
+    </a>
+    <div class="wave-5"></div>
+    <div class="wave-lost wrp">
+        <?php foreach (str_split($statusCode) as $digit): ?>
+        <span class="font-en"><?= $digit ?></span>
+        <?php endforeach ?>
+    </div>
+    <div class="wave-4"></div>
+    <div class="wave-boat">
+        <img class="boat" src="http://res.cloudinary.com/andrewhani/image/upload/v1524501894/404/boat.svg" alt="Boat">
+    </div>
+    <div class="wave-3"></div>
+    <div class="wave-2"></div>
+    <div class="wave-1"></div>
+    <div class="wave-message mb-5 px-5">
+        <p>
+            <?php if ($statusCode == 404): ?>
+                <?= __('template', "You're lost") ?>
+            <?php else: ?>
+                <?= $name ?>
+            <?php endif ?>
+        </p>
+        <p>
+            <?= __('template', 'Click {link} or on the island to return', [
+                'link' => '<a href="'.tools()->getBaseUrl().'">here</a>'
+            ]) ?>
+        </p>
+    </div>
+</div>
+<div class="detail-info text-white">
+    <p>
+        <span class="font-en"><?= $name ?> (<?= $statusCode ?>)</span>
+        <br>
+        <?= $message ?>
+    </p>
+    <small class="font-en"><i><?= tools()->getNow() ?></i></small>
+</div>

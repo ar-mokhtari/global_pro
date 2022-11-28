@@ -1,0 +1,50 @@
+<?php 
+$toolbar->html()->setNameSpace($toolbar->getNameSpace());
+$showDeparting = isset($addDepartingSort) && $addDepartingSort;
+?>
+
+<?php if ($toolbar->getSearchParams()): ?>
+<div class="mt-5 toolbar-days">
+    <div class="search-box-body flex-wrap adjacent-days md-padding d-flex justify-content-between align-items-center">
+        <div class="col-md-5 col-sm-5 adjacent-days mb-3 no-padding">
+            <?php if ($toolbar->getDate()): ?>
+                <a href="<?= $toolbar->getPrevDayUrl() ?>">
+                    <button type="submit" class="adjacent-days__prev">
+                        <i class="fa fa-caret-right"></i><span class="prev-day-text"><?= __('template', 'Previous Day') ?></span>
+                    </button>
+                </a>
+                <span class="adjacent-days__date"><?= $toolbar->getDate() ?></span>
+                <a href="<?= $toolbar->getNextDayUrl() ?>">
+                    <button type="submit" class="adjacent-days__next">
+                        <i class="fa fa-caret-left"></i><span class="next-day-text"><?= __('template', 'Next Day') ?></span>
+                    </button>
+                </a>
+            <?php endif ?>
+        </div>
+
+        <div class="col-md-7 col-sm-7 mb-3 sorting bar sort-button-group no-padding">
+            <?php if ($showDeparting): ?>
+            <button type="button" class="departing-sort sort-btn" data-sort-by="departing" data-sort-direction="asc">
+                <i class="fa fa-sort-amount-down"></i><?= __('template', 'Departing') ?>
+            </button>
+            <?php endif ?>
+            <button type="button" class="price-sort sort-btn" data-sort-by="price" data-sort-direction="asc">
+                <i class="fa fa-sort-amount-down"></i><?= __('template', 'Price') ?>
+            </button>
+            <button type="button" class="discount-sort sort-btn" data-sort-by="discount" data-sort-direction="desc">
+                <i class="fa fa-sort-amount-up"></i><?= __('template', 'Discount') ?>
+            </button>
+        </div>
+
+        <script type="text/javascript">
+            var codnitiveIsotope = new codnitive.isotope();
+            var searchResultList = codnitiveIsotope.init('.list.results.right-section', {
+                price: '[data-price] parseFloat',
+                <?php if ($showDeparting): ?>departing: '[data-departing] parseInt',<?php endif ?>
+                discount: '[data-discount] parseFloat',
+            });
+            codnitiveIsotope.sort(searchResultList);
+        </script>
+    </div>
+</div>
+<?php endif; ?>

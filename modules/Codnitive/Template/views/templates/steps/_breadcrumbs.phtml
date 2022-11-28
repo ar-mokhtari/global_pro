@@ -1,0 +1,11 @@
+<div id="breadcrumbs" class="breadcrumbs visible-md visible-lg mt-4">
+    <div class="container">
+        <div class="breadcrumbs__container">
+            <ul class="breadcrumbs__steps results">
+                <?php foreach ($breadcrumbs as $breadcrumb): ?>
+                <li><i class="<?= $breadcrumb['class'] ?>"></i> <span><?= $breadcrumb['title'] ?></span></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>

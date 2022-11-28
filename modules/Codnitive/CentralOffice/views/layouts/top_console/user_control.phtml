@@ -1,0 +1,35 @@
+<!-- User Account: style can be found in dropdown.less -->
+<li class="dropdown user user-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="<?= tools()->getImageUrl('/icons/user8.png') ?>" class="user-image" alt="User Image">
+        <span class="hidden-xs"><?= tools()->getUser()->identity->fullname?></span>
+    </a>
+    <ul id="user-menu" class="dropdown-menu">
+        <!-- User image -->
+        <li class="user-header">
+            <img src="<?= tools()->getImageUrl('/icons/user8.png') ?>" class="img-circle" alt="User Image">
+            <p>
+                <?= tools()->getUser()->identity->fullname?>
+                <small>مدیرعامل</small>
+            </p>
+        </li>
+        <!-- Menu Body -->
+        <li class="user-body">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a href="<?= tools()->getBaseUrl(); ?>">صفحه اصلی</a>
+                </div>
+            </div>
+            <!-- /.row -->
+        </li>
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            <div class="pull-right">
+                <a href="<?= tools()->getUrl('account'); ?>" class="btn btn-default btn-flat">پروفایل</a>
+            </div>
+            <div class="pull-left">
+                <a href="<?= tools()->getUrl('user/logout'); ?>" class="btn btn-default btn-flat">خروج</a>
+            </div>
+        </li>
+    </ul>
+</li>

@@ -1,0 +1,34 @@
+<canvas id="today_orders"></canvas>
+<h4 class="d-flex flex-row justify-content-around mt-5">
+	<span><?= __('reports', 'Today\'s total sales') ?></span>
+	<strong><?= tools()->formatRial($block->getTotalSales()) ?></strong>
+</h4>
+
+<script>
+$(document).ready(function () {
+	var todayOrdersCtx = document.getElementById('today_orders').getContext('2d');
+	var todayOrdersData = {
+		labels: [<?= $block->getChartLables() ?>],
+		datasets: [{
+			// label: 'My dataset' // for legend
+			data: [<?= $block->getChartValues() ?>],
+			// backgroundColor: '#343a40',
+			// borderColor: '#000',
+			backgroundColor: [
+				'#0DA6E0', // flight
+				'#00ffcc', // intlflight
+				'#93291E', // intlhotel
+				'#ED213A', // hotel
+				'#ff0487', // bus
+				'#a22bff', // insurance
+				'#ffd200', // tourism
+			],
+		}],
+	};
+	var options = {
+		title: '<?= __('admin', 'Today Orders') ?>'
+	};
+	var todayOrdersChart = new charts;
+	todayOrdersChart.simplePolarChart(todayOrdersCtx, todayOrdersData, options);
+});
+</script>

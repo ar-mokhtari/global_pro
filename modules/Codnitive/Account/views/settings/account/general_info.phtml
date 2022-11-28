@@ -1,0 +1,13 @@
+<?php
+$block = new app\modules\Codnitive\Account\blocks\Settings;
+?>
+
+<div class="no-padding col-sm-12 align-items-stretch">
+    <div class="box-info p-4 ">
+        <?php if ('change-password' == $block->getProfileAction()): ?>
+            <?= $this->render('change_password.phtml', ['model' => $model]); ?>
+        <?php else: ?>
+            <?= $this->render('profile.phtml', ['model' => $model]); ?>
+        <?php endif; ?>
+    </div>
+</div>

@@ -1,0 +1,184 @@
+/* Extra small devices (portrait phones, less than 576px) */
+/* No media query for `xs` since this is the default in Bootstrap */
+
+/* jump general styles end */
+.breadcrumb-item + .breadcrumb-item {
+    padding-right: 0.1rem !important;
+}
+
+.breadcrumb-item + .breadcrumb-item::after {
+    padding-right: 0.1 0rem
+}
+
+.breadcrumb-header li a {
+    /*    font-size: 12px;*/
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.title-span {
+    font-size: 12px;
+    margin-left: 7px;
+}
+
+.header-page h1 {
+    font-size: 15px;
+}
+
+.box-header .fa-map-marker {
+    transform: translateY(-20px);
+    font-size: 20px;
+}
+
+.header-page .start-reservation .date-reserve {
+    text-align: center !important
+}
+
+#about .about-text {
+    padding: 0.5rem
+}
+
+.details p.text-indent {
+    padding-left: 10px !important
+}
+
+.slideshow {
+    width: 90%;
+}
+
+#myTab-role .nav-item {
+    width: 25%;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 11px;
+}
+#myTab-role .nav-item  .nav-link{
+    padding: .5rem .9rem
+}
+#map{
+    width: auto;
+}
+section.features-hotel ul li a{
+    font-size: 13px;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .title-span {
+        font-size: 14px;
+
+    }
+
+    .header-page .start-reservation .date-reserve {
+        text-align: left !important
+    }
+
+    .box-header .fa-map-marker {
+        transform: translateY(-5px);
+        font-size: 20px;
+    }
+
+    #myTab-role .nav-item {
+        width: 25%;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+  
+}
+
+/* jump small (sm) styles end */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .title-span {
+        font-size: 14px;
+
+    }
+
+    .header-page .start-reservation .date-reserve {
+        text-align: left !important
+    }
+
+    .box-header .fa-map-marker {
+        transform: translateY(-5px);
+        font-size: 20px;
+    }
+
+    .details p.text-indent {
+        padding-left: 20px !important
+    }
+}
+
+/* jump medium (md) styles end */
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .breadcrumb-header li a {
+        font-size: 14px;
+    }
+
+    .title-span {
+        font-size: 14px;
+    }
+
+    .header-page .start-reservation .date-reserve {
+        text-align: left !important
+    }
+
+    .details p.text-indent {
+        padding-left: 20px !important
+    }
+
+    #myTab-role .nav-item {
+        width: 25%;
+        border-bottom: 1px solid #ddd;
+        text-align: center
+    }
+    #map{
+        width: auto;
+    }
+   
+}
+
+/* jump large (lg) styles end */
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .breadcrumb-header li a {
+        font-size: 14px;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::after {
+        display: inline-block;
+        padding-right: 1.5rem;
+        padding-left: .5rem;
+
+
+    }
+
+    .title-span {
+        font-size: 14px;
+
+    }
+
+    .header-page .start-reservation .date-reserve {
+        text-align: left !important
+    }
+
+    .details p.text-indent {
+        padding-left: 20px !important
+    }
+
+    #myTab-role .nav-item {
+        width: 20%;
+        border-bottom: 1px solid #ddd;
+        text-align: center
+    }
+
+   
+}
+
+/* jump extra large (xl) styles end */

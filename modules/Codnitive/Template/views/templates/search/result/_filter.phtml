@@ -1,0 +1,33 @@
+<?php
+$showTitle = false;
+?>
+
+<div id="sidebar_filter_title" class="d-flex align-content-center align-items-center justify-content-center box-filter">
+    <h3 class="text-center-2 bg-blue"><?= __('template', 'Filter By') ?></h3>
+</div>
+<div id="accordion" class="d-flex panel panel-primary behclick-panel">
+    <div class="panel-body filter">
+        <?php foreach ($filterBlock->getFilters() as $filterName => $filter) {
+            if (!empty($filter['data'])) {
+                $filterTemplate = trim($this->render("_filter/_{$filter['type']}.phtml", ['filterName' => $filterName, 'data' => $filter['data']]));
+                if (!empty($filterTemplate)) {
+                    $showTitle = true;
+                    echo $filterTemplate;
+                }
+            }
+        }?>
+    </div>
+</div>
+<?php if (!$showTitle): ?>
+<script type="text/javascript">
+$('#sidebar_filter_title').remove();
+</script>
+<?php endif ?>
+
+<script type="text/javascript">
+    if (!(searchResultList instanceof codnitive.isotope)) {
+        searchResultList = new codnitive.isotope();
+        var searchResultListSort = searchResultList.init('.list.results.right-section', {});
+            searchResultListSort = searchResultList.initFilter(searchResultListSort);
+    }
+</script>

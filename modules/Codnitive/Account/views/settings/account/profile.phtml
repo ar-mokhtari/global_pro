@@ -1,0 +1,92 @@
+<?php
+$block = new app\modules\Codnitive\Account\blocks\Settings;
+$block->html()->setNameSpace('settings-form');
+?>
+
+<?php $form = $block->beginForm([
+    'id' => 'account-form',
+    'options' => ['class' => 'form-horizontal col-12 flex-row row m-0 p-0', 'autocomplete' => 'off'],
+    'fieldConfig' => [
+        'template' => "{label}\n<div class=\"col-lg-9\">{input}</div>\n<div class=\"col-sm-offset-3 col-lg-9\">{error}\n{hint}</div>",
+        'labelOptions' => ['class' => 'col-lg-3 control-label'],
+    ],
+    'enableAjaxValidation' => true,
+    'enableClientValidation' => false,
+]); ?>
+<?= $block->html()->getField($form, $model, 'email', '', '', [
+    'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column', 
+    'class' => 'd-flex justify-content-start', 
+    // 'force_form_group_class' => true
+]); ?>
+<?= $block->html()->getField($form, $model, 'username', '', '', [
+    'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column', 
+    'class' => 'd-flex justify-content-start', 
+    // 'force_form_group_class' => true
+]) ?>
+<?= $block->html()->getField($form, $model, 'fullname', '', '', [
+    'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column', 
+    'class' => 'd-flex justify-content-start', 
+    // 'force_form_group_class' => true
+])/*->label(__('account', 'Full Name'))*/ ?>
+<?= $block->html()->getDateField($form, $model, 'dob', $this, [
+        'class'=> 'd-flex justify-content-start',
+        'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column',
+        /*'form_group_class'  => 'col-12',*/
+        // 'col_size'          => 'col-4',
+        // 'remove_label' => true,
+        // 'icon' => 'fa fa-calendar',
+        // @link datepicker page: https://github.com/Mds92/MD.BootstrapPersianDateTimePicker
+        'date_options' => [
+            // 'targetDateSelector' => '#bus-departing',
+            // 'targetTextSelector' => '#bus-departing',
+            'dateFormat' => 'yyyy-MM-dd',
+            'textFormat' => 'yyyy-MM-dd',
+            // 'isGregorian' => false,
+            // 'disableBeforeToday' => true,
+            'disableAfterToday' => true,
+            // 'monthsToShow' => [0, 1],
+            // 'rangeSelector' => true,
+            'englishNumber' => true,
+            'yearOffset' => 100,
+            // 'rangeSelector' => false,
+            // 'placement' => 'auto'
+        ]
+    ])
+    // ->label(__('template', 'Birthday')) 
+?>
+<script type="text/javascript">
+$(document).ready(function () { 
+    $("#settings-form-dob").on('inserted.bs.popover', function () {
+        setTimeout(function () {
+            $('.mds-bootstrap-persian-datetime-picker-popover button[select-year-button]').trigger('click');
+        }, 50)
+    })
+});
+</script>
+<?= $block->html()->getDropdownList(
+        $form, 
+        $model, 
+        'gender', 
+        tools()->genderOptions(),
+        [
+            'class'=> 'd-flex justify-content-start',
+            'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column',
+            'prompt' => false,
+            'live_search' => 'false',
+            'fastselect' => [
+                'removeQuickSearch' => true
+            ]
+        ],
+        $this
+    )
+    // ->label(__('template', 'Gender'))
+?>
+<?= $block->html()->getField($form, $model, 'current_password', '', '', [
+    'form_group_class' => 'box-input col-12 col-sm-6 mb-4 d-flex flex-column', 
+    'class' => 'd-flex justify-content-start', 
+    // 'force_form_group_class' => true
+])->passwordInput() ?>
+<div class="box-input col-12 text-center d-flex flex-row justify-content-center">
+    <?= $block->html()->submitButton(__('account', 'Save'), ['class' => 'btn-blue col-6 col-sm-3']) ?>
+</div>
+<?php $block->endForm(); ?>

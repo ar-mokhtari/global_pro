@@ -1,0 +1,60 @@
+<?php if (!empty($data['list'])): ?>
+<?php 
+$collapsible = $data['collapsible'];
+?>
+<div class="block">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a <?php if($collapsible): ?>
+                    data-toggle="collapse" href="#collapse_<?= $filterName ?>" 
+                    <?php if($data['expanded']): ?>aria-expanded="true"<?php endif ?> 
+                    <?php if(!$data['expanded']): ?>class="collapsed"<?php endif ?>
+                <?php endif ?>>
+                <?= $data['title'] ?>
+                <?php if($collapsible): ?><i class="indicator fa fa-caret-down"></i><?php endif ?>
+            </a>
+        </h4>
+    </div>
+    <div id="collapse_<?= $filterName ?>"
+        <?php if($collapsible): ?>
+            data-filter-group="<?= $filterName ?>"
+        <?php endif ?> 
+        class="panel-collapse 
+            <?= $filterName ?>-block filter-group
+            <?php if($collapsible): ?> collapse
+                <?php if($data['expanded']): ?> show<?php endif ?>
+            <?php endif ?>
+        "
+    >
+        <ul class="list-group">
+            <?php foreach ($data['list'] as $optionEnglish => $option): ?>
+            <li class="list-group-item">
+                <div class="checkbox">
+                    <?php $template = (!isset($data['template']) || empty($data['template'])) ? '_checkbox/_item_template.phtml' : $data['template'] ?> 
+                    <?= 
+                    $this->render($template, [
+                        'filterName' => $filterName,
+                        'optionEnglish' => $optionEnglish,
+                        'option' => $option,
+                        'data' => $data
+                    ]) 
+                    ?>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif ?>
+
+<script type="text/javascript">
+    if (!(searchResultList instanceof codnitive.isotope)) {
+        searchResultList = new codnitive.isotope();
+        var searchResultListSort = searchResultList.init('.list.results.right-section', {});
+            searchResultListSort = searchResultList.initFilter(searchResultListSort);
+    }
+    searchResultListSort = searchResultList.initFilter(searchResultListSort);
+    searchResultList.filterCheckbox(
+        searchResultListSort, '#collapse_<?= $filterName ?>'
+    );
+</script>

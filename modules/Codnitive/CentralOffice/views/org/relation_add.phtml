@@ -1,0 +1,78 @@
+<?php
+
+use kartik\form\ActiveForm;
+use yii\helpers\Html;
+use yii\widgets\Pjax;
+
+/* @var $this yii\web\View */
+/* @var $model app\modules\Codnitive\CentralOffice\models\coding\ */
+/* @var $form yii\widgets\ActiveForm */
+/* @var $all_org array */
+/* @var $code_name string */
+/* @var $block */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $searchModel app\modules\Codnitive\CentralOffice\models\coding\CodingrelationSearch */
+?>
+<?php
+$script = <<<JS
+// $(document).off('change','#org_relation');
+// $(document).off('change','#org_relation_index');
+$("#org_modal").find('.modal-header h5').text('$code_name');
+$("#org_relation").on('pjax:beforeSend',function(e) {
+     NProgress.start();
+});
+$('#org_relation').on('pjax:success',function() {
+    $.pjax.reload({container:'#org_relation_index',async:false});
+    NProgress.done();
+});
+
+JS;
+$this->registerJs($script);
+?>
+<div class="org_relation">
+<?php Pjax::begin(['id' => 'org_relation', 'timeout' => false]); ?>
+<?php $form = ActiveForm::begin([
+    'options' => ['data-pjax' => 0, 'autocomplete' => 'off'],
+    'id' => 'frm-org_relation',
+]); ?>
+    <div class="margin">
+        <?= Html::submitButton('ثبت تغییرات', ['class' => 'btn btn-info']) ?>
+        <button type="button" class="btn" style="float: left" data-dismiss="modal">انصراف</button>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <?= $block->OfficeHtml()->getDropdownList($form, $model, 'second_code',
+                $all_org,
+                [
+                    'remove_label' => true,
+                    'prompt' => false,
+                    'live_search' => 'false',
+                    'enableAjaxValidation' => true,
+                    'autofocus' => 'autofocus',
+                    'tabindex' => '-1',
+                    'multiple' => 'multiple',
+                    'fastselect' => [
+                        'multiple data-live-search' => 'true',
+                        'removeQuickSearch' => false,
+                        'autoFocus' => true,
+                        'focusFirstItem' => true,
+                        'searchPlaceholder' => __('account', 'search'),
+//                        'url' => tools()->getUrl(''),
+                        'loadOnce' => true,
+                        'typeTimeout' => 550,
+//                        'maxItems' => 5,
+                    ],
+                ]
+                , $this) ?>
+        </div>
+    </div>
+<?php ActiveForm::end(); ?>
+<?php Pjax::end(); ?>
+
+    <?php
+$script = <<<JS
+
+JS;
+$this->registerJs($script);
+?>
+</div>

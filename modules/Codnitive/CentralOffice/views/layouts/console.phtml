@@ -1,0 +1,73 @@
+﻿<?php
+/* @var $content */
+/* @var $this \yii\web\View */
+
+use yii\widgets\Pjax; ?>
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="<?= tools()->getUrl('centraloffice')?>" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">منو</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>راهکار یکپارچه اطلاعات رابین</b></span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top fixed-tops">
+            <!-- Sidebar toggle button-->
+            <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <?php include 'top_console/messages.phtml' ?>
+                    <?php include 'top_console/notifications.phtml' ?>
+                    <?php include 'top_console/tasks.phtml' ?>
+                    <?php include 'top_console/user_control.phtml' ?>
+                    <?php include 'top_console/left_sidebar.phtml' ?>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <?php require 'sidebar/mainsidebar.phtml' ?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <?php Pjax::begin(['id' => 'layout-render', 'timeout' => false, 'formSelector' => false]); ?>
+                <?= $content ?>
+                <?php Pjax::end(); ?>
+            </div>
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="footer main-footer text-center">
+        <span>
+            <?= __('template', 'UserID') ?> :
+            <?= tools()->getUser()->identity->id ?>
+        </span>
+        <span>
+            <?= __('template', 'LastReloadPage') ?> :
+            <?php
+            $dateParts = explode(' ', tools()->getFormattedDate(date('Y-m-d'), 'Y-m-d H:i'));
+            $persianDate = new \app\modules\Codnitive\Calendar\models\Persian();
+            $persianWeekDay = __('calendar', date('l'));
+            $formattedValue = str_replace('-', '/', ($persianDate)->getDate($dateParts[0]));
+
+            echo $persianWeekDay . '&nbsp;&nbsp;';
+            echo $formattedValue;
+            ?>
+            &nbsp;
+            <?= date('Y/m/d') ?>
+            &nbsp;
+            <?= date('H:i') ?>
+         </span>
+        <span>
+            <?= __('account', 'User Name') ?> :
+            <?= tools()->getUser()->identity->fullname ?>
+        </span>
+    </footer>
+    <?php include 'sidebar/left_sidebar_body.phtml' ?>
+</div>
+<!-- ./wrapper -->

@@ -1,0 +1,9 @@
+<script type="text/javascript">
+    var codnitiveIsotope = new codnitive.isotope();
+    var searchResultList = codnitiveIsotope.init('.list.results .right-section', {
+        price: '[data-price] parseFloat',
+        departing: '[data-departing] parseInt',
+        discount: '[data-discount] parseFloat',
+    });
+    codnitiveIsotope.sort(searchResultList);
+</script>

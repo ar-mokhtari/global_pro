@@ -1,0 +1,25 @@
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <?= $form->field($model, 'LettersText')->textarea(['rows' => 6, 'id' => 'ckeditor'])->label(false) ?>
+</div>
+
+<?php
+$script = <<<JS
+    CKEDITOR.replace('ckeditor');
+    var el = $("#ckeditor");
+    $(document).on('load',function(){
+        $.fn.modal.Constructor.prototype.enforceFocus = function () {
+            modal_this = this;
+            $(document).on('focusin.modal', function (e) {
+                if (modal_this.el !== e.target && !modal_this.el.has(e.target).length
+                // add whatever conditions you need here:
+                &&
+                !$(e.target.parentNode).hasClass('cke_dialog_ui_input_select') 
+                && !$(e.target.parentNode).hasClass('cke_dialog_ui_input_text')) {
+                    modal_this.el.focus()
+                }
+            })
+        };
+    });
+JS;
+$this->registerJs($script);
+?>

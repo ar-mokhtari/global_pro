@@ -1,0 +1,34 @@
+<?php if (!empty($params)): ?>
+<?php if (isset($goingPathTemplate) && !empty($goingPathTemplate)) echo $goingPathTemplate ?>
+<div class="container">
+    <div class="search-info box-result d-flex flex-row justify-content-between gray-back align-items-center">
+        <div class="p-3 d-flex flex-wrap info info-path">
+            <div class="d-none d-xl-flex align-items-center align-items-center justify-content-center item-search box-<?= $moduleId ?>">
+                <span class="<?= $icon ?>"></span>
+            </div>
+            <span class="res-search d-inline-flex mr-2 align-items-center justify-content-center">
+                <?= $title ?>
+            </span>
+        </div>
+        <?= $extraOptions ?>
+        <div class="p-3 d-flex info-count">
+            <span class="result-count-title"><?= __('template', 'Search Result') ?>:&nbsp;</span>
+            <span class="search-result-count">-</span><?= __('template', 'Item(s)') ?>
+        </div>
+        <?php if (!isset($hideSearchAgain) || !$hideSearchAgain): ?>
+            <div class="p-3 d-flex search-again" data-toggle="collapse" href="#<?= $moduleId ?>_search_again_form" role="button" aria-expanded="false" aria-controls="<?= $moduleId ?>_search_again_form">
+                <?= __('template', 'Search Again') ?><i class="fa fa-search mr-2"></i>
+            </div>
+        <?php endif ?>
+    </div>
+    <?php if (!isset($hideSearchAgain) || !$hideSearchAgain): ?>
+        <div id="<?= $moduleId ?>_search_again_form" class="collapse m-0 p-0 search-again-box">
+            <div class="bilit-search-box pt-5 px-3">
+                <div class="tab-<?= $moduleId ?>">
+                    <?= $searchFormTemplate ?>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
+</div>
+<?php endif; ?>

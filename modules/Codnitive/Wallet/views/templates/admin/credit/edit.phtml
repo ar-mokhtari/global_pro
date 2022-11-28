@@ -1,0 +1,49 @@
+<?php 
+    $block->registerAssets($this, 'Wallet', 'Admin\Wallet');
+?>
+<div class="row mt-3">
+    <div class="col-9">
+        <?= $block->html()->getFieldFastselect(
+            $form, 
+            $model, 
+            'user_id', 
+            '', 
+            '', 
+            [
+                // 'placeholder' => $model->user_label ?? __('wallet', 'User'), // format: name (phone)
+                // 'value' => $model->user_id,
+                'fastselect' => [
+                    'searchPlaceholder' => __('wallet', 'Type User Phone or Name'),
+                    'url' => tools()->getUrl('admin/account/ajax/findUser'),
+                    'loadOnce' => false,
+                    'typeTimeout' => 550,
+                    'autoFocus' => true,
+                ]
+            ],
+            $this
+        ); ?>
+        <?= $block->html()->getPriceField(
+            $form, 
+            $model, 
+            'credit_amount'
+        ); ?>
+        <?= $block->html()->getPriceField(
+            $form, 
+            $model, 
+            'change_amount'
+        ); ?>
+        <?= $block->html()->getField(
+            $form, 
+            $model, 
+            'description'
+        ); ?>
+    </div>
+    <div id="user_current_credit" class="col-3"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var wallet = new codnitive.adminWallet();
+    wallet._init();
+});
+</script>

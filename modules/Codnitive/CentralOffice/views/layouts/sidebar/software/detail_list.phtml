@@ -1,0 +1,273 @@
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-bars"></i>
+        <span>اطلاعات پایه</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="treeview menu-open">
+            <a href="#"><i class="fa fa-circle-o text-yellow"></i>کدینگ
+                <span class="pull-left-container">
+                  <i class="fa fa-angle-right pull-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu" style="display: block;">
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['']) ?>"><i
+                                class="fa fa-circle-o"></i>کدینگ حسابداری</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['']) ?>"><i
+                                class="fa fa-circle-o"></i>کدینگ اشخاص حقیقی|حقوقی</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['']) ?>"><i
+                                class="fa fa-circle-o"></i>کدینگ طرف‌ها</a></li>
+            </ul>
+        </li>
+        <li><a class="js-pjax"
+               data-href="<?= Yii::$app->urlManager->createUrl(['centraloffice/org/index']) ?>">
+                <i class="fa fa-circle-o"></i><?= __('centraloffice', 'Organization') ?></a></li>
+        <li><a class="js-pjax"
+               data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/users/index']) ?>"><i
+                        class="fa fa-circle-o"></i>کاربران</a></li>
+    </ul>
+</li>
+<li class="treeview active">
+    <a href="#">
+        <i class="fa fa-envelope"></i>
+        <span>اتوماسیون اداری</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a class="js-pjax"
+               data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/letters/draft']) ?>"><i
+                        class="fa fa-circle-o"></i>پیش‌نویس نامه</a></li>
+        <li class="treeview">
+            <a href="#"><i class="fa fa-circle-o text-aqua"></i>صندوق
+                <span class="pull-left-container">
+                  <i class="fa fa-angle-right pull-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/recieveletter']) ?>"><i
+                                class="fa fa-circle-o"></i>صندوق دریافتی</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/sendletters']) ?>"><i
+                                class="fa fa-circle-o"></i>نامه های ارسالی </a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#"><i class="fa fa-circle-o text-aqua"></i>نامه‌های ارجاعی
+                <span class="pull-left-container">
+                  <i class="fa fa-angle-right pull-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/inreferralletters']) ?>"><i
+                                class="fa fa-circle-o"></i>ارجاعی گرفته شده</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/outreferralletters']) ?>"><i
+                                class="fa fa-circle-o"></i>ارجاعی فرستاده شده</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#"><i class="fa fa-circle-o text-aqua"></i>گزارش نامه‌ها
+                <span class="pull-left-container">
+                  <i class="fa fa-angle-right pull-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/letterstrash']) ?>"><i
+                                class="fa fa-circle-o"></i>نامه های حذف شده</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/readedletters']) ?>"><i
+                                class="fa fa-circle-o"></i>نامه های خوانده  شده</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/unreadedletters']) ?>"><i
+                                class="fa fa-circle-o"></i>نامه های خوانده نشده</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/securityletters']) ?>"><i
+                                class="fa fa-circle-o"></i>  نامه های محرمانه</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/forceletters']) ?>"><i
+                                class="fa fa-circle-o"></i>نامه های فوری</a></li>
+            </ul>
+        </li>
+        <li><a class="js-pjax"
+               data-href="<?= Yii::$app->urlManager->createUrl(['officeautomation/reports/mixedreport']) ?>"><i
+                        class="fa fa-circle-o text-red"></i><?= __('centraloffice','MixedReport') ?></a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-usd"></i>
+        <span>حسابداری</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="treeview">
+            <a href="#"><i class="fa fa-circle-o text-aqua"></i>تعریف کدینگ
+                <span class="pull-left-container">
+                  <i class="fa fa-angle-right pull-left"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=1']) ?>">
+                        <i class="fa fa-circle-o"></i>کد گروه</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=2']) ?>">
+                        <i class="fa fa-circle-o"></i>کد کل</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=3']) ?>">
+                        <i class="fa fa-circle-o"></i>کد معین</a></li>
+                <li><a class="js-pjax"
+                       data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=4']) ?>">
+                        <i class="fa fa-circle-o"></i>کد تفصیلی</a></li>
+                <li class="treeview">
+                    <a href="#"><i class="fa fa-circle-o"></i>کد مراکز هزینه
+                        <span class="pull-left-container">
+                      <i class="fa fa-angle-right pull-left"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a class="js-pjax"
+                               data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=5']) ?>">
+                                <i class="fa fa-circle-o"></i>کد مرکز هزینه 1</a></li>
+                        <li><a class="js-pjax"
+                               data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=6']) ?>">
+                                <i class="fa fa-circle-o"></i>کد مرکز هزینه 2</a></li>
+                        <li><a class="js-pjax"
+                               data-href="<?= Yii::$app->urlManager->createUrl(['accounting/coding/list?grp=1&level=7']) ?>">
+                                <i class="fa fa-circle-o"></i>کد مرکز هزینه 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><a class="js-pjax-modal"
+               data-href="<?= Yii::$app->urlManager->createUrl(['accounting/accdocs/docs_form']) ?>"
+               data-header="<?= $acc_header = __('centraloffice', 'Accounting Document') ?>">
+                <i class="fa fa-circle-o"></i><?= $acc_header ?></a></li>
+        <li><a class="js-pjax"
+               data-href="<?= Yii::$app->urlManager->createUrl(['accounting/accdocs/docs_list']) ?>">
+                <i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-credit-card"></i>
+        <span>خزانه داری</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href=""><i class="fa fa-circle-o"></i>تعریف کدینگ</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>سند حسابداری</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-shopping-cart"></i>
+        <span>خرید و فروش</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href=""><i class="fa fa-circle-o"></i>تعریف کدینگ</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>سند حسابداری</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-university"></i>
+        <span>انبار مقداری/ریالی</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href=""><i class="fa fa-circle-o"></i>تعریف کدینگ</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>سند حسابداری</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-newspaper-o"></i>
+        <span>کارگزینی و حقوق و دستمزد</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href=""><i class="fa fa-circle-o"></i>تعریف کدینگ</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>سند حسابداری</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+<li class="treeview">
+    <a href="#">
+        <i class="fa fa-check-square-o"></i>
+        <span>دارائی های ثابت (اموال)‏</span>
+        <span class="pull-left-container">
+              <i class="fa fa-angle-right pull-left"></i>
+            </span>
+    </a>
+    <ul class="treeview-menu">
+        <li><a href=""><i class="fa fa-circle-o"></i>تعریف کدینگ</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>سند حسابداری</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>لیست اسناد</a></li>
+        <li><a href=""><i class="fa fa-circle-o"></i>گزارش تراز آزمایشی</a></li>
+    </ul>
+</li>
+
+<?php
+require 'modals/modal_box.html';
+$script = <<<JS
+$(document).on('click','.js-pjax',function(e) {
+        NProgress.start();
+        var link = $(this).data('href');
+        var link_ajax = link+'-ajax';
+        var ok = true;
+        $.post(link_ajax,{ok:ok},function(data) {
+            $('#layout-render').html(data);
+            history.pushState(null,'',link);
+             NProgress.done();
+        });
+}).on('click','.js-pjax',function(e) {
+    e.preventDefault();
+});
+$(document).on('click','.js-pjax-modal',function(e) {
+        NProgress.start();
+        var link_ajax = $(this).data('href'),
+        header = $(this).data('header'),
+         ok = true;
+        $.post(link_ajax,{ok:ok},function(data) {
+            $('#modal_box').modal('show').find('#modal_box_body').html(data);
+            $('.modal-header').find('.modal-title').text(header);
+            NProgress.done();
+        });
+}).on('click','.js-pjax-modal',function(e) {
+    e.preventDefault();
+});
+
+JS;
+$this->registerJs($script);
+?>

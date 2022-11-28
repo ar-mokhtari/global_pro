@@ -1,0 +1,7 @@
+<label>
+    <input type="checkbox" value="<?= $optionEnglish ?>" data-filter="[data-<?= $filterName ?>=<?= $optionEnglish ?>]">
+    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+    <span title="<?= __('template', '{rating} Star(s)', ['rating' => $option]) ?>" class="main-blue">
+    <?= $this->render('stars.phtml', ['rating' => $option, 'list' => $data['list']]) ?>
+    </span>
+</label>

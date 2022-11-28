@@ -1,0 +1,23 @@
+<?php 
+    $block = new app\modules\Codnitive\Wallet\blocks\CreditForm;
+    $block->registerAssets($this, 'Wallet', 'Wallet');
+?>
+<div id="payment_method_wallet_form" class="">
+    <div class="box-wallet-pey d-flex flex-column mt-3">
+        <div class="d-flex flex-row justify-content-around">
+        <h5 class="d-flex "><?= __('wallet', 'Wallet Credit') ?></h5>
+        <h5 class="d-flex"><?= tools()->formatRial(floatval(tools()->getUser()->identity->credit_amount)) ?></h5>
+        </div>
+        <div class="d-flex d-flex justify-content-center mt-3">
+            <input type="hidden" id="grand_total_value" value="<?= $block->getGrandTotal() ?>">
+            <input type="text" value="<?= $block->getAutoFillCreditFieldValue() ?>" max="<?= $block->getGrandTotal() ?>" name="wallet_used_credit" id="wallet_credit_to_use" class="number col-lg-8 col-md-4 col-sm-4 mr-3 ml-0" autocomplete="off">
+            <span><?= __('wallet', 'Rial') ?></span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    var wallet = new codnitive.wallet();
+    wallet._init();
+});
+</script>

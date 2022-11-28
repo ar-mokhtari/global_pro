@@ -1,0 +1,21 @@
+//liyunfang js customise
+        add to show:		$menu.parents('tr').css("background-color", "#f4f7ad");
+        add to close:       $menu.parents('tr').css("background-color", "");
+// SMS
+		https://apidocs.sms.ir/
+	
+// Windows system32 drivers etd hosts
+		127.0.0.1       gp.loc
+
+// xampp apachi conf extra httpd-vhost
+		<VirtualHost gp.loc:80>
+			DocumentRoot "C:/xampp/htdocs/GlobalPro/web/"
+		</VirtualHost>
+
+		<VirtualHost 127.0.0.1:80>
+			DocumentRoot "C:/xampp/htdocs/"
+		</VirtualHost>
+
+		<VirtualHost 192.168.1.120:80>
+			DocumentRoot "C:/xampp/htdocs/GlobalPro/web/"
+		</VirtualHost>

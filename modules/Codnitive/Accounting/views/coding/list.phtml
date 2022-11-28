@@ -1,0 +1,174 @@
+<?php
+
+use kartik\grid\GridView;
+use yii\widgets\Pjax;
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\modules\Codnitive\CentralOffice\models\coding\CodingSearch */
+/* @var $LettersAttachmentType app\modules\Codnitive\CentralOffice\models\coding\CodingSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'کدینگ حسابداری';
+?>
+
+<?php
+$script = <<<JS
+    $('.add_draft_modal_closed').click(function() {
+        $('#add_modal_box').empty();
+        $('#edit_modal_box').empty();
+        $('#add_attach_modal_box').empty();
+        $('#send_modal_box').empty();
+
+    });
+JS;
+$this->registerJs($script);
+?>
+<!--//adding Modal-->
+<!---->
+
+<?php echo $this->renderFile('@app/modules/Codnitive/CentralOffice/views/modals/add_modal.html') ?>
+<!---->
+<!--//Edit Modal-->
+<!---->
+<?php echo $this->renderFile('@app/modules/Codnitive/CentralOffice/views/modals/edit_modal.html') ?>
+<!---->
+<!--//Add Attach Modal-->
+<!---->
+<?php echo $this->renderFile('@app/modules/Codnitive/CentralOffice/views/modals/add_attach_modal.html') ?>
+<!---->
+<!--//send draft Modal-->
+<!---->
+<?php echo $this->renderFile('@app/modules/Codnitive/CentralOffice/views/modals/send_modal.html') ?>
+<!---->
+<style>
+    .panel-heading {
+        padding-bottom: 0;
+    }
+</style>
+<div class="list-index">
+    <?php Pjax::begin(['id' => 'list-index', 'timeout' => 'false']); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php
+    Yii::$app->params['bsVersion'] = '3';
+    ?>
+    <?php
+    //aliz 990702
+    //this is require for this account code form, because it's perform by get argument in url
+    $buttonText = __('core', 'Reset Filter');
+    $url = '/' . app()->request->pathInfo .
+        '?grp=' . Yii::$app->request->get('grp') .
+        '&level=' . Yii::$app->request->get('level');
+    $resetFilterButton = <<<BTN
+        <a style="margin: 0.4rem 10px" class="pull-left" href="$url"><span class="btn btn-outline">$buttonText</span></a>
+
+BTN;
+    ?>
+    <?= /** @noinspection PhpUnhandledExceptionInspection */
+    GridView::widget([
+        'id' => 'db_grid',
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'hover' => true,
+        'responsive' => true,
+        'resizableColumns' => true,
+        'persistResize' => true,
+        'pjax' => false,
+        'pager' => [
+            'firstPageLabel' => 'اولین',
+            'lastPageLabel' => 'آخرین',
+            'nextPageLabel' => 'صفحه بعد',
+            'prevPageLabel' => 'صفحه قبل'
+        ],
+//        'layout' => '\n{summary}\n{pager}',
+        'export' => [
+            'fontAwesome' => true,
+            'icon' => '',
+            'label' => __('accounting', 'Export to'),
+            'menuOptions' => ['class' => 'dropdown-menu dropdown-menu-left'],
+        ],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'fa fa-arrows',
+                'label' => Yii::t('accounting', 'Full Page'),
+//                'class' => '',
+                'title' => Yii::t('accounting', 'Full Page Show'),
+            ],
+            'page' => [
+                'icon' => 'fa fa-clone',
+                'label' => Yii::t('accounting', 'Pagination'),
+//                'class' => '',
+                'title' => Yii::t('accounting', 'Pagination Show'),
+            ],
+        ],
+        'toggleDataContainer' => ['class' => 'btn-group-sm'],
+        'exportContainer' => ['class' => 'btn-group-sm float-left'],
+        'showPageSummary' => true,
+        'resizeStorageKey' => Yii::$app->user->id . '-' . date("m"),
+        'options' => [
+            'id' => 'grid_view',
+        ],
+        'columns' => [
+            [
+                'attribute' => 'id',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+                'format' => ['decimal', 0],
+                'pageSummary' => true,
+                'pageSummaryFunc' => 'f_sum',
+                'hidden' => true,
+            ],
+            [
+                'attribute' => 'code',
+                'hAlign' => 'center',
+                'pageSummary' => true,
+                'pageSummaryFunc' => 'f_count',
+            ],
+            [
+                'attribute' => 'name',
+                'hAlign' => 'right',
+                'vAlign' => 'middle',
+                'width' => '45%',
+                'noWrap' => true,
+            ],
+            'user_create',
+            [
+                'attribute' => 'make_date',
+                'value' => function ($model) {
+                    $dateParts = explode(' ', tools()->getFormattedDate($model->make_date, 'Y-m-d H:i'));
+                    return str_replace('-', '/', (new \app\modules\Codnitive\Calendar\models\Persian())->getDate($dateParts[0]));
+                }
+            ],
+            ['attribute' => 'active', 'noWrap' => true],
+        ],
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY,
+            'heading' => Yii::$app->request->get('level') == 1 ? 'فرم کدینگ حسابداری - کد گروه' :
+                (Yii::$app->request->get('level') == 2 ? 'فرم کدینگ حسابداری - کد کل' :
+                    (Yii::$app->request->get('level') == 3 ? 'فرم کدینگ حسابداری - کد معین' :
+                        (Yii::$app->request->get('level') == 4 ? 'فرم کدینگ حسابداری - کد تفصیلی' :
+                            (Yii::$app->request->get('level') == 5 ? 'فرم کدینگ حسابداری - کد مرکز هزینه 1' :
+                                (Yii::$app->request->get('level') == 6 ? 'فرم کدینگ حسابداری - کد مرکز هزینه 2' :
+                                    (Yii::$app->request->get('level') == 7 ? 'فرم کدینگ حسابداری - کد مرکز هزینه 3' : ''))))))
+            ,
+        ],
+        'panelTemplate' => '{panelHeading}{items}{panelFooter}',
+        'panelHeadingTemplate' => '
+                    {title}<span style="float: left;font-size: 8px;">{export}</span>
+                    <hr style="border-color: #ffffff ;box-shadow: 0 0 2px deepskyblue, 0 0 2px lightblue ;margin: 17px 0 0 0">
+                    <div class="row">
+                    <style>button{margin: 5px 10px 0 0;padding: 4px 5px}</style>
+                        <button id="add_draft" style="font-size: 8pt !important;" class="btn btn-default">
+                            ایجاد کد جدید
+                        </button> 
+                    ' . $resetFilterButton . '                 
+                    </div>
+                    ',
+        'panelFooterTemplate' =>
+            '{pager}{summary}{toggleData}',
+
+    ]); ?>
+
+    <?php Pjax::end(); ?>
+
+</div>

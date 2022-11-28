@@ -1,0 +1,205 @@
+<?php
+/* @var $dataProvider array */
+
+use kartik\grid\GridView;
+
+?>
+<?php
+$script = <<<JS
+    $('.detail_modal_closed').click(function() {
+        $('#detail_modal_box').empty();
+    });
+JS;
+$this->registerJs($script);
+?>
+
+<div class="tab-pane fade in active" id="circulation" role="tabpanel" aria-labelledby="circulation-tab">
+    <?php
+    $buttonText = __('core', 'Reset Filter');
+    $url = '/' . app()->request->pathInfo;
+    $resetFilterButton = <<<BTN
+        <a style="margin: 0.4rem 10px" class="pull-left" href="$url"><span class="btn btn-outline">$buttonText</span></a>
+
+BTN;
+    ?>
+    <?= /** @noinspection PhpUnhandledExceptionInspection */
+    GridView::widget([
+        'id' => 'db_grid',
+        'dataProvider' => $dataProvider,
+//        'filterModel' => $searchModel,
+        'hover' => true,
+        'responsive' => true,
+        'resizableColumns' => true,
+        'persistResize' => true,
+        'pjax' => false,
+//        'layout' => '\n{summary}\n{pager}',
+        'export' => [
+            'fontAwesome' => true,
+            'icon' => '',
+            'label' => __('officeautomation', 'Export to'),
+            'menuOptions' => ['class' => 'dropdown-menu dropdown-menu-left'],
+        ],
+        'toggleDataOptions' => [
+            'all' => [
+                'icon' => 'fa fa-arrows',
+                'label' => Yii::t('officeautomation', 'Full Page'),
+//                'class' => '',
+                'title' => Yii::t('officeautomation', 'Full Page Show'),
+            ],
+            'page' => [
+                'icon' => 'fa fa-clone',
+                'label' => Yii::t('officeautomation', 'Pagination'),
+//                'class' => '',
+                'title' => Yii::t('officeautomation', 'Pagination Show'),
+            ],
+        ],
+        'toggleDataContainer' => ['class' => 'btn-group-sm'],
+        'exportContainer' => ['class' => 'btn-group-sm float-left'],
+        'showPageSummary' => true,
+        'resizeStorageKey' => Yii::$app->user->id . '-' . date("m"),
+        'options' => [
+            'id' => 'grid_view',
+        ],
+        'columns' => [
+            [
+                'label' => '',
+                'attribute' => 'TYPE',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+            ],
+            [
+                'attribute' => 'number',
+                'label' => 'شماره نامه',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+                'format' => ['decimal', 0],
+                'pageSummary' => true,
+                'pageSummaryFunc' => 'f_sum',
+            ],
+            [
+                'attribute' => 'date_',
+                'label' => 'تاریخ',
+                'vAlign' => 'middle',
+                'noWrap' => true,
+                'value' => function ($model) {
+                    $dateParts = explode(' ', tools()->getFormattedDate($model['date_'], 'Y-m-d H:i'));
+                    return str_replace('-', '/', '[' . $dateParts[1] . ']'
+                        . '   '
+                        . (new \app\modules\Codnitive\Calendar\models\Persian())->getDate($dateParts[0]));
+                },
+            ],
+            [
+                'attribute' => 'subject',
+                'label' => 'موضـــوع',
+                'width' => '45%',
+                'headerOptions' => ['style' => 'text-align:center;'],
+                'hAlign' => 'right',
+                'vAlign' => 'middle',
+                'contentOptions' =>
+                    [
+                        'style' => '
+                            max-width: 350px;
+                            overflow: hidden;
+                            word-wrap: break-word;
+                            text-overflow:ellipsis;
+                            font-size: 8.5pt!important;
+                            ',
+                    ],
+                'noWrap' => true,
+                'pageSummary' => true,
+                'pageSummaryFunc' => 'f_count',
+            ],
+            [
+                'attribute' => 'sender',
+                'label' => 'فرستنده',
+                'vAlign' => 'middle',
+                'noWrap' => true,
+                'contentOptions' =>
+                    [
+                        'style' => '
+                            max-width: 100px;
+                            overflow: hidden;
+                            word-wrap: break-word;
+                            text-overflow:ellipsis;
+                            font-size: 8.5pt!important;
+                            '
+                    ]
+                ,
+            ],
+            [
+                'label' => '',
+                'attribute' => 'STATUS',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+            ],
+            [
+                'attribute' => 'receiver',
+                'label' => 'گیرنده',
+                'vAlign' => 'middle',
+                'noWrap' => true,
+                'contentOptions' =>
+                    [
+                        'style' => '
+                            max-width: 100px;
+                            overflow: hidden;
+                            word-wrap: break-word;
+                            text-overflow:ellipsis;
+                            font-size: 8.5pt!important;
+                            '
+                    ]
+                ,
+            ],
+            [
+                'label' => 'وضعیت',
+                'attribute' => 'read_type',
+                'vAlign' => 'middle',
+                'hAlign' => 'right',
+                'width' => '3%',
+            ],
+            ['class' => 'yii\grid\ActionColumn', 'header' => '', 'template' => '{view_description}',
+                'buttons' =>
+                    [
+                        'view_description' => function ($url, $model) use ($dataProvider) {
+                            return '<button onclick="show_detail(this)" data-id= "' . $model['id'] .
+                                '" data-subject="' . $model['subject'] . '" class="btn btn-xs btn-bitbucket show_desc" >'
+                                . __('officeautomation', 'Text') .
+                                '</button>';
+                        }
+                    ],
+            ],
+        ],
+        'panel' => [
+            'type' => GridView::TYPE_PRIMARY,
+        ],
+        'panelTemplate' => '{items}{panelFooter}',
+        'panelFooterTemplate' =>
+            '{pager}{summary}{toggleData}',
+    ]); ?>
+</div>
+
+<?php
+$Lunch_modal = tools()->getBaseUrl() . tools()->getUrl('officeautomation/reports/showdescription');
+
+/** @noinspection UnterminatedStatementJS */
+$script = /** @lang text */
+    <<<JS
+    function show_detail(tag){
+        var url = '$Lunch_modal',
+        data_id = $(tag).data('key') !== undefined ? $(tag).data('key') : $(tag).data('id') ,
+        data = {id:data_id};
+        NProgress.start();
+        $.post(url,data,function(msg) {
+            $('#detail_modal').modal('show').find('#detail_modal_box').html(msg);
+            NProgress.done();
+        })  
+    }
+    $('#grid_view').find('table tbody tr').dblclick(function() {
+        target = $(this).find('button');
+        show_detail(target);
+    });
+JS;
+$this->registerJs($script);
+?>

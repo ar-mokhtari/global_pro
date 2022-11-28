@@ -1,0 +1,10 @@
+<?php if (!$transaction): ?>
+    <div class="d-flex flex-column p-3 border mx-3">
+        <?= __('template', 'No transaction info, user doesn\'t back to website.') ?>
+    </div>
+<?php else: ?>
+<?= $this->render($transaction->getTransactionTemplate(), ['transaction' => $transaction, 'showMoreDetails' => $showMoreDetails]) ?>
+<?php endif ?>
+<?php if (app()->getModule('coupon')): ?>
+<?= $this->render('@app/modules/Codnitive/Coupon/views/templates/admin/sales/transaction.phtml', ['transaction' => $transaction]) ?>
+<?php endif ?>

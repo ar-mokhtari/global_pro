@@ -1,0 +1,36 @@
+body
+{
+
+    font-family: IRANSansWeb;
+
+    font-size: 8px;
+}
+
+
+
+@font-face {
+    font-family:'IRANSansWeb';
+    src:url('../fonts/IRANSansWeb.eot');
+    src:url('../fonts/IRANSansWeb.eot?#iefix') format("embedded-opentype"),
+    url('../fonts/IRANSansWeb.woff') format("woff"),
+    url('../fonts/IRANSansWeb.ttf') format("truetype");
+
+}
+button
+{
+    font-size: 9px !important;
+}
+/*Button*/
+
+/*Button*/
+
+
+.modal.fade .modal-dialog {
+    -webkit-transform: translate(0, 0%);
+    -ms-transform: translate(0, 0%);
+    transform: translate(0, 0%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+}

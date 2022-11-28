@@ -1,0 +1,63 @@
+<div class="home3">
+     <div class="banner_text_inner">
+        <h4 class="">تماس با ما</h4>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<section class="mb-0 mt-5">
+    <div class="container">
+        <section class="contact_us_area row pt-0">
+            <div class="col-12 col-lg-6 p-2 mb-5" id="map"></div>
+            <div class="col-12 col-md-8 col-lg-6 contact_details_inner" style="margin-left: auto; margin-right: auto;">
+                <div class="text-center">
+                    <div class="contact_form">
+                        <div class="main_title">
+                            <h2>فرم تماس با ما</h2>
+                            <p>در صورت داشتن هر گونه سوال و یا برای ارسال نظرات خود، شما می‌توانید از طریق فرم یا شماره زیر با ما در ارتباط باشید.</p>
+                            <p>شماره تماس: 021&nbsp;2641&nbsp;1593</p>
+                        </div>
+                        <form class="contact_us_form row mt-4" action="<?= tools()->getUrl('contact-us'); ?>" method="post" id="contactForm" novalidate="novalidate">
+                            <?= tools()->getCsrfInput() ?>
+                            <div class="form-group col-lg-12">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="نام">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="ایمیل">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="موضوع">
+                            </div>
+                            <div class="form-group col-lg-12">
+                                <textarea class="form-control" name="message" id="message" rows="15" placeholder="لطفا پیام خود را اینجا تایپ کنید..."></textarea>
+                            </div>
+                            <div class="form-group col-md-6 text-center">
+                                <button type="submit" value="submit" class="btn submit_btn submit-contact form-control">ارسال پیام</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8qnL2aMVa62xQu_Vf2m9qdafTPLpLCDs&callback=initMap" async defer></script>
+        <script>
+            function initMap() {
+                // Styles a map in night mode.
+                var myLatLng = {
+                    lat: 35.777057,
+                    lng: 50.857940
+                };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    zoom: 17,
+                });
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: '',
+
+                });
+            }
+        </script>
+    </div>
+</section>

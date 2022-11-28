@@ -1,0 +1,15 @@
+<?php 
+use app\modules\Codnitive\Template\assets\OwlCarousel;
+OwlCarousel::register($this);
+?>
+
+<div class="home">
+    <div class="home_slider_container">
+        <div class="home_slider_background slide active" id="slide-flight" style="background-image:url(<?= tools()->getImageUrl('flight-slide.jpg') ?>)"></div>
+        <div class="home_slider_background slide" id="slide-intlflight" style="background-image:url(<?= tools()->getImageUrl('intl-flight-slide.jpg') ?>)"></div>
+        <div class="home_slider_background slide" id="slide-intlhotel" style="background-image:url(<?= tools()->getImageUrl('intlhotel-slide.jpg') ?>)"></div>
+        <div class="home_slider_background slide" id="slide-bus" style="background-image:url(<?= tools()->getImageUrl('bus-slide.jpg') ?>)"></div>
+        <div class="home_slider_background slide" id="slide-insurance" style="background-image:url(<?= tools()->getImageUrl('insurance-slide.jpg') ?>)"></div>
+        <div class="home_slider_background slide" id="slide-tourism" style="background-image:url(<?= tools()->getImageUrl('tourism-slide.jpg') ?>)"></div>
+    </div>
+</div>

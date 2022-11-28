@@ -1,0 +1,20 @@
+<!-- Accordion card -->
+<div class="card mt-4">
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="headingInsuranceTerms">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseInsuranceTerms"
+        aria-expanded="false" aria-controls="collapseInsuranceTerms">
+        <h5 class="mb-0"><i class="fa fa-angle-down rotate-icon orange"></i>
+            مورد 4
+        </h5>
+        </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapseInsuranceTerms" class="collapse" role="tabpanel" aria-labelledby="headingInsuranceTerms" data-parent="#accordionEx">
+        <div class="card-body">
+            <?= $this->render('_list.phtml') ?>
+        </div>
+    </div>
+</div>
+<!-- Accordion card -->

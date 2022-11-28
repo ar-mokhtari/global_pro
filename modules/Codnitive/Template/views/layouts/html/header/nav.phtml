@@ -1,0 +1,34 @@
+
+<div class="header-2">
+    <div class="container">
+        <div class="header_content d-flex flex-row  justify-content-between col-12 pl-6 pr-2">
+            <div class="main-menubar d-flex align-items-center">
+                <nav class="hide">
+                    <a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><span class="icon-plane-1"></span><?= __('template', 'Sample') ?></a>
+                    <a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><span class="icon-plane-1"></span><?= __('template', 'Sample') ?></a>
+                    <a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><span class="icon-plane-1"></span><?= __('template', 'Sample') ?></a>
+                    <a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><span class="icon-plane-1"></span><?= __('template', 'Sample') ?></a>
+                    <a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><span class="icon-plane-1"></span><?= __('template', 'Sample') ?></a>
+                </nav>
+                <div class="menu-bar"><span class="fa fa-bars color"></span></div>
+            </div>
+            <div class="d-flex align-items-center header-phone">
+                <span class="color-white hover-color-white"><?= __('template', '0912&nbsp;847&nbsp;62&nbsp;13&nbsp;') ?></span><i class="fa fa-phone color mr-2"></i>
+            </div>
+            <div class="link-bar-icon p-3 float-left"><span class="fa fa-link color"></span></div>
+        </div>
+
+    </div>
+    <!-- End Header Area -->
+    <?= $this->render('_logo.phtml'); ?>
+</div>
+<script>
+$(document).ready(function () {
+    $('.link-bar-icon').on('click', function () {
+        $('.main-menubar nav').addClass('hide');
+        $('.main-menubar .menu-bar .fa').removeClass('fa-times-circle');
+        $('.main-menubar .menu-bar .fa').addClass('fa-bars');
+        $('.top_bar').slideToggle();
+    });
+});
+</script>

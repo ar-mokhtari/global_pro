@@ -1,0 +1,43 @@
+<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'LettersSubject')->textarea(
+                [
+                    'maxlength' => true,
+                    'disable' => true,
+                    'readonly' => true,
+                    'rows' => 5
+                ]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'LettersAbstract')->textarea(
+                [
+                    'maxlength' => true,
+                    'disable' => true,
+                    'readonly' => true,
+                    'rows' => 5
+                ]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'LettersResponseType', ['enableAjaxValidation' => true])->
+            dropDownList(['' => 'اولویت پاسخگویی', 0 => 'دارد', 1 => 'ندارد']) ?>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <?= $form->field($model, 'LettersFollowType')->
+            dropDownList(['' => 'پیگیری', 0 => 'دارد', 1 => 'ندارد']) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'LettersTypeOfAction')->
+            dropDownList(['' => 'نوع اقدام', 0 => 'عادی', 1 => 'اولویت بالا', 2 => 'فوری']) ?>
+        </div>
+        <div class="col-md-3">
+            <?= $form->field($model, 'LettersSecurity')->
+            dropDownList(['' => 'درجه امنیتی', 0 => 'عادی', 1 => 'محرمانه', 2 => 'سری']) ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- right side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-right image">
+                <img src="<?= tools()->getImageUrl('/icons/user8.png') ?>" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-right info">
+                <p><?= tools()->getUser()->identity->fullname ?></p>
+                <a href="#"><i style="width: 1.5rem;height: 1.55rem;padding: 0 0 17px 0;margin: 0 0.5rem;" class="fa fa-check-square
+                <?php
+                    @$t = @fsockopen("www.example.com", 80);
+                    switch ($t) {
+                        case true:
+                            $icon = 'btn btn-success btn-xs';
+                            $text = __('template', 'Online');
+                            break;
+                        case false:
+                            $icon = 'btn btn-danger btn-xs';
+                            $text = __('template', 'Offline');
+                            break;
+                    }
+                    echo $icon ?>  "></i><?= $text ?> </a>
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>داشبرد</span>
+                </a>
+            </li>
+            <?php include 'software/detail_list.phtml'?>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,13 @@
+<div class=" d-flex flex-row  justify-content-start">
+    <nav class="main_nav mr-auto">
+        <ul>
+            <li class="text-center"><a href="index.html"><?= __('template', 'Home') ?></a></li>
+            <li><a href=""><?= __('template', 'Ticket') ?></a></li>
+            <li><a href=""><?= __('template', 'Magazine') ?></a></li>
+            <li><a href=""><?= __('template', 'Terms and Conditions') ?></a></li>
+            <li><a href=""><?= __('template', 'Job Seek') ?></a></li>
+            <li><a href=""><?= __('template', 'About Us') ?></a></li>
+            <li><a href=""><?= __('template', 'Contact Us') ?></a></li>
+        </ul>
+    </nav>
+</div>

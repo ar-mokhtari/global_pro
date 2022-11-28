@@ -1,0 +1,18 @@
+<div class="no-padding col-sm-12">
+  <div class="box-info row">
+      <div class="col-md-5 col-sm-12 d-flex flex-row bd-left2 p-4 wallet-amount">
+        <div class="col-4 d-flex align-items-center justify-content-center p-0">
+          <i class="fa fa-wallet fz-30 blue " style="font-size:40px;"></i>
+        </div>
+        <div class="col-8 d-flex flex-column align-items-center justify-content-center wallet-info p-0">
+          <p><?= __('wallet', 'Your wallet credit amount') ?></p>
+          <?php if (!tools()->isGuest()): ?>
+          <p class="currency blue"><?= tools()->formatRial((float) tools()->getUser()->identity->credit_amount) ?></p>
+          <?php endif; ?>
+        </div>
+      </div>
+      <div class="col-md-7 col-sm-12 p-4 d-flex justify-content-center flex-column">
+      <?= $this->render('charge.form.phtml', ['formModel' => $formModel]) ?>
+      </div>
+  </div>
+</div>

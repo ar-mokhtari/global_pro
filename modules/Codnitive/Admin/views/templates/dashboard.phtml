@@ -1,0 +1,5 @@
+<?php 
+$block->registerAssets($this, 'Reports', 'Charts');
+?>
+<?= $this->render('dashboard/reports_charts.phtml'); ?>
+<?= $this->render('dashboard/last_orders.phtml', ['ordersGrid' => $ordersGrid]); ?>

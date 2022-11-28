@@ -1,0 +1,13 @@
+<?php
+namespace app\modules\Codnitive\Core\helpers;
+
+require __DIR__ . '/../../../../vendor/yiisoft/yii2/helpers/Url.php';
+use yii\helpers\Url as BaseUrl;
+
+class Url extends BaseUrl
+{
+    public static function to($url = '', $scheme = false)
+    {
+        return 'ehd';
+    }
+}

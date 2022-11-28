@@ -1,0 +1,22 @@
+<!-- Accordion card -->
+<div class="card mt-4">
+
+<!-- Card header -->
+<div class="card-header" role="tab" id="headingBusTerms">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseBusTerms"
+    aria-expanded="false" aria-controls="collapseBusTerms">
+    <h5 class="mb-0"><i class="fa fa-angle-down rotate-icon orange"></i>
+       مورد 1
+    </h5>
+    </a>
+</div>
+
+<!-- Card body -->
+<div id="collapseBusTerms" class="collapse" role="tabpanel" aria-labelledby="headingBusTerms" data-parent="#accordionEx">
+    <div class="card-body">
+        <?= $this->render('_list.phtml') ?>
+    </div>
+</div>
+
+</div>
+<!-- Accordion card -->

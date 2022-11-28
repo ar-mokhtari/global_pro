@@ -1,0 +1,411 @@
+﻿<?php
+/* @var $this \yii\web\View */
+
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+use yii\widgets\Breadcrumbs;
+
+?>
+
+<?php
+NavBar::begin([
+    'brandLabel' => 'راهکار مدیریت یکپارچه اطلاعات ERP',
+//        'brandUrl' => Yii::$app->homeUrl,
+    'options' => [
+        'class' => 'navbar-inverse navbar-fixed-top',
+        'style' => 'background-color:#012b5b;box-shadow: 0 0 5px grey, 0 0 5px grey; '
+
+    ],
+]);
+try {
+    echo Nav::widget([
+        'items' => [
+            [
+                'label' => 'صفحه اصلی',
+                'url' => ['site/index'],
+                'linkOptions' => [''],
+            ],
+            [
+                'label' => 'منوی ویژه',
+                'items' => [
+                    '<li class="divider"></li>',
+                    '<li class="dropdown-header">فرم ها:</li>',
+                    ['label' => 'تنظیمات نمایش', 'url' => '#'],
+                ],
+            ],
+            [
+                'label' => 'اطلاعات پایه',
+                'items' => [
+                    '<li class="dropdown-header">کدینگ:</li>',
+                    ['label' => 'انواع اقدام', 'url' => '#'],
+                    ['label' => 'انواع سطح دسترسی', 'url' => '#'],
+                    ['label' => 'انواع پیگیری', 'url' => '#'],
+                    '<li class="divider"></li>',
+                    '<li class="dropdown-header">اشخاص:</li>',
+                    ['label' => 'تعریف پست های سازمانی', 'url' => '#'],
+                    ['label' => 'تعریف واحدهای سازمانی', 'url' => '#'],
+                ],
+            ],
+            [
+                'label' => 'گزارشات',
+                'items' => [
+                    '<li class="dropdown-header">نامه:</li>',
+                    ['label' => 'پیش نویس نامه', 'url' => 'letters'],
+                    ['label' => 'نامه های دریافتی', 'url' => 'recieveletter'],
+                    ['label' => 'نامه های ارسالی', 'url' => 'sendletters'],
+                    ['label' => 'ارجاعی دریافتی', 'url' => 'inreferralletters'],
+                    ['label' => 'ارجاعی فرستاده', 'url' => 'outreferralletters'],
+                    ['label' => 'نامه های محرمانه', 'url' => 'securityletters'],
+                    '<li class="divider"></li>',
+                    '<li class="dropdown-header">آمار:</li>',
+                    ['label' => 'گزارش روزانه', 'url' => '#'],
+                ],
+            ],
+            [
+                'label' => 'خــروج',
+                'url' => '/user/logout'
+            ],
+        ],
+        'options' => ['class' => 'navbar-nav'],
+    ]);
+} catch (Exception $e) {
+}
+NavBar::end();
+?>
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2" style="padding: 0!important;min-height: 100vh !important; background-color: transparent">
+            <div style=" box-shadow: 0 0 5px #BBBBBB, 0 0 5px #2980b9;" class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#CentralOffice"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>گردش مستندات</a>
+                        </h4>
+                    </div>
+                    <div id="CentralOffice" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-edit"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/letters/draft']) ?>">پیش نویس
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-envelope"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/recieveletter']) ?>">صندوق دریافتی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-send"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/sendletters']) ?>">نامه های ارسالی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-toggle-down"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/inreferralletters']) ?>">ارجاعی گرفته شده
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-toggle-up"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/outreferralletters']) ?>">ارجاعی فرستاده شده
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-trash-o"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/letterstrash']) ?>">نامه های حذف شده
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-envelope-open-o"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/readedletters']) ?>">نامه های خوانده شده
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-envelope-o"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/unreadedletters']) ?>">نامه های خوانده نشده
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-exclamation-circle"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/securityletters']) ?>">نامه های محرمانه
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-bolt"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/reports/forceletters']) ?>">نامه های فوری
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-users"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['officeautomation/users/index']) ?>">کاربران
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Accounting"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>حسابداری</a>
+                        </h4>
+                    </div>
+                    <div id="Accounting" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Sell"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>خرید و فروش</a>
+                        </h4>
+                    </div>
+                    <div id="Sell" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Treasury"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>خزانه داری</a>
+                        </h4>
+                    </div>
+                    <div id="Treasury" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#Salary"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>کارگزینی و حقوق و دستمزد</a>
+                        </h4>
+                    </div>
+                    <div id="Salary" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#WorkFlow"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>مدیریت گردش فرم ها</a>
+                        </h4>
+                    </div>
+                    <div id="WorkFlow" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" style="text-align: center">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#CRM"><span
+                                        style="margin-left: 15px" class="fa fa-building-o">
+                            </span>مدیریت ارتباط با مشتری</a>
+                        </h4>
+                    </div>
+                    <div id="CRM" class="collapse" aria-expanded="false" style="height: 0;">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 18px" class="fa fa-home"></span>
+                                        <li style="list-style: none" class="active">
+                                            <a class="js-pjax"
+                                               href="<?= Yii::$app->urlManager->
+                                               createUrl(['/']) ?>">صفحه اصلی
+                                            </a>
+                                        </li>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10" style="padding: 1px!important;">
+            <div class="well"
+                 style="box-shadow: 0 0 5px #BBBBBB, 0 0 5px #2980b9 ; ;
+                     background-color: white !important; height: 100vh !important;">
+
+                <?= /** @noinspection PhpUnhandledExceptionInspection */
+                Breadcrumbs::widget([
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]) ?>
+                <hr
+                        style="border-color: #BBBBBB;
+                            box-shadow: 0 0 5px #D2E0E6, 0 0 5px lightcoral ;
+                            margin: 5px">
+                <div>
+                    <?= $content ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <h6>
+        <?=  __('account', 'User Name')  ?> :
+    <?= tools()->getUser()->identity->fullname ?>
+    </h6>
+</div>

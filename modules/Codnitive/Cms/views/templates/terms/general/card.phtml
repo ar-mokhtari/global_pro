@@ -1,0 +1,22 @@
+<!-- Accordion card -->
+<div class="card">
+
+<!-- Card header -->
+<div class="card-header" role="tab" id="headingGeneralTerms">
+    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseGeneralTerms" aria-expanded="true"
+    aria-controls="collapseGeneralTerms">
+    <h5 class="mb-0 "><i class="fa fa-angle-up rotate-icon orange"></i>
+        شرایط و قوانین عمومی
+    </h5>
+    </a>
+</div>
+
+<!-- Card body -->
+<div id="collapseGeneralTerms" class="collapse show" role="tabpanel" aria-labelledby="headingGeneralTerms" data-parent="#accordionEx">
+    <div class="card-body">
+        <?= $this->render('_list.phtml') ?>
+    </div>
+</div>
+
+</div>
+<!-- Accordion card -->

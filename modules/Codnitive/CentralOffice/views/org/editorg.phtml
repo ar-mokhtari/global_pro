@@ -1,0 +1,82 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
+
+/* @var $this yii\web\View */
+/* @var $model app\modules\Codnitive\CentralOffice\models\coding\ */
+/* @var $form yii\widgets\ActiveForm */
+/* @var $all_org array */
+/* @var $block */
+?>
+<?php
+$script = <<<JS
+$("#frm-jobs").on('beforeSubmit',function(e) {
+     NProgress.start();
+    var form = $(this);
+    var formData = form.serialize();
+    $.ajax({
+        url:form.attr('action'),
+        type:form.attr('method'),
+        data:formData,   
+        success:function(data) {
+            $.pjax.reload({container:'#org-index',async:false});
+            $(".org_modal_closed").trigger('click');
+            Swal.fire(after_post);
+            NProgress.done();
+        }
+    });
+}).on('submit',function(e) {
+    $(document).off('submit','#jobs-updating form[data-pjax]');
+    e.preventDefault();
+});
+JS;
+$this->registerJs($script);
+?>
+<div class="jobs-form">
+    <?php Pjax::begin(['id' => 'jobs-updating', 'timeout' => false, 'enablePushState' => false]); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['data-pjax' => 0, 'autocomplete' => 'off'],
+        'id' => 'frm-jobs',
+    ]); ?>
+    <div class="row">
+        <div class="col-md-6">
+            <?= $form->field($model, 'name', [
+                'inputOptions' =>
+                    [
+                        'autofocus' => 'autofocus',
+                        'tabindex' => '1',
+                    ]])->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-lg-6">
+            <?= $block->OfficeHtml()->getDropdownList($form, $model, 'parent',
+                $all_org,
+                [
+                    'remove_label' => false,
+                    'prompt' => 'انتخاب',
+                    'live_search' => 'false',
+                    'enableAjaxValidation' => true,
+                    'autofocus' => 'autofocus',
+                    'tabindex' => '-1',
+                    'fastselect' => [
+                        'removeQuickSearch' => false,
+                        'autoFocus' => true,
+                        'focusFirstItem' => true,
+//                        'searchPlaceholder' => __('', ''),
+//                        'url' => tools()->getUrl(''),
+                        'loadOnce' => false,
+                        'typeTimeout' => 550,
+                        'maxItems' => 5,
+                    ],
+                ]
+                , $this) ?>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <?= Html::submitButton('ثبت تغییرات', ['class' => 'btn btn-info']) ?>
+        <button type="button" class="btn" style="float: left" data-dismiss="modal">انصراف</button>
+    </div>
+    <?php ActiveForm::end(); ?>
+    <?php Pjax::end(); ?>
+</div>

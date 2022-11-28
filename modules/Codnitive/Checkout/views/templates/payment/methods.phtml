@@ -1,0 +1,26 @@
+<?php $block = new \app\modules\Codnitive\Checkout\blocks\Payment\Methods; ?>
+<ul class="pey-item px-3">
+    <?php foreach ($block->getMethods() as $method): ?>
+    <?php if ($method['visibility'] == 'registered' && tools()->isGuest()) continue; ?>
+    <?php $lowerName = strtolower($method['name']) ?>
+    <li class="payment-method payment-method-<?= $lowerName ?> mb-2">
+        <div class="radio payment-method-<?= $lowerName ?>">
+            <input 
+                type="radio" 
+                value="<?= $method['name'] ?>" 
+                name="payment_method" 
+                id="payment_method_<?= $lowerName ?>" 
+                class="color" 
+                required="required"
+                <?php if ('SepMicro' == $method['name']): ?>checked="cheched" <?php endif ?> 
+            >
+            <label for="payment_method_<?= $lowerName ?>" title="<?= __('template', $method['title']) ?>" class="mb-0">
+            <i class="<?= $method['icon'] ?> mr-1 ml-1 color"></i><?= __('template', $method['title']) ?>
+            </label>
+            <?php if (isset($method['template']) && !empty($method['template'])): ?>
+                <?= $this->render($method['template']) ?>
+            <?php endif ?>
+        </div>
+    </li>
+    <?php endforeach; ?>
+</ul>

@@ -1,0 +1,36 @@
+<div class="col-md-6 no-right-pad col-sm-12 align-items-stretch dashboard-user-info">
+  <div class="box-info ">
+    <div class="d-flex flex-row justify-content-between p-2 align-items-center bd-bottom">
+      <span class=""><?= __('account', 'User Information') ?></span> <i class="fas fa-user blue"></i>
+    </div>
+    <div class="px-3 bd-bottom">
+      <table class=" table  account__info">
+        <tbody>
+          <tr>
+            <th><?= __('account', 'Name') ?>: </th>
+            <td><?= $userIdentity->fullname ?></td>
+          </tr>
+          <tr>
+            <th><?= __('account', 'Email') ?>: </th>
+            <td><?= $userIdentity->email ?></td>
+          </tr>
+          <tr>
+            <th><?= __('template', 'Cellphone') ?>: </th>
+            <td><?= $userIdentity->cellphone ?></td>
+          </tr>
+          <tr>
+            <th><?= __('template', 'Birthday') ?>: </th>
+            <td><?= str_replace('-', '/', $userIdentity->dob) ?></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row ltr p-3">
+      <div class="col-12 col-sm-5 col-md-12 col-lg-8 col-xl-6">
+        <a href="<?= tools()->getUrl('account/user/settings', ['action' => 'profile']) ?>" id="edit-profile-action" class="btn-blue">
+            <?= __('account', 'Edit Profile') ?>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

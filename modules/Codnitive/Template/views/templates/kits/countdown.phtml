@@ -1,0 +1,39 @@
+<div class="countdown">
+    <?php $clockId = 'clockdiv' . $id ?>
+    <div id="<?= $clockId ?>" class="clock clockdiv d-flex justify-content-center ltr">
+        <?php /*<div>
+            <span class="days">000</span>
+            <div class="smalltext">Days</div>
+        </div>
+        <div>
+            <span class="hours">00</span>
+            <div class="smalltext">Hours</div>
+        </div>*/ ?>
+        <div class="m-1 bg-dark text-light p-3 font-en col-1">
+            <span class="minutes fz-40">00</span><span class="minutes fz-25">m</span>
+            <?php /*<div class="smalltext">Minutes</div>*/ ?>
+        </div>
+        <div class="m-1 bg-dark text-light p-3 font-en col-1">
+            <span class="seconds fz-40">00</span><span class="minutes fz-25">s</span>
+            <?php /*<div class="smalltext">Seconds</div>*/ ?>
+        </div>
+    </div>
+    <?php //$deadline = $event->getTimerDeadline() ?>
+    <?php if ($deadline): ?>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var deadline = new Date(Date.parse('<?= $deadline ?>'));
+                codnitive.initializeCountdown(
+                    '<?= $clockId ?>', 
+                    deadline, 
+                    {
+                        // days: false, 
+                        // hours: false, 
+                        minutes: true, 
+                        seconds: true, 
+                    }
+                );
+            });
+        </script>
+    <?php endif; ?>
+</div>

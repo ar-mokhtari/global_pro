@@ -1,0 +1,43 @@
+<?php 
+$languageParams = [
+    'fa' => [
+        'name' => 'فارسی',
+        'icon' => 'iran.png'
+    ],
+    'en' => [
+        'name' => 'English',
+        'icon' => 'united-kingdom.png'
+    ]
+];
+?>
+<li class="top-bar-item">
+    <div class="btn-group btn-language">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+            <img id="countryFlag" src="">
+            <span id="countryName"></span>
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+
+        <ul class="dropdown-menu" >
+            <li onclick="selectCountry('<?= $languageParams['fa']['name'] ?>', '<?= $languageParams['fa']['icon'] ?>')" >
+                <a href="<?= tools()->getCurrentUrl('fa') ?>" title="Select this card">
+                    <img src="<?= tools()->getMediaUrl('flag/iran.png') ?>">
+                    فارسی
+                </a>
+            </li>
+            <li onclick="selectCountry('<?= $languageParams['en']['name'] ?>', '<?= $languageParams['en']['icon'] ?>')">
+                <a href="<?= tools()->getCurrentUrl('en') ?>" title="Select this card">
+                    <img src="<?= tools()->getMediaUrl('flag/united-kingdom.png') ?>">
+                    English
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        const selectCountry = (country, flag) => {
+            document.getElementById('countryName').innerHTML = country;
+            document.getElementById('countryFlag').src = "/media/flag/" + flag;
+        };
+        selectCountry('<?= $languageParams[tools()->getLang()]['name'] ?>', '<?= $languageParams[tools()->getLang()]['icon'] ?>');
+    </script>
+</li>

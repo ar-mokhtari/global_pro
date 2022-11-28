@@ -1,0 +1,20 @@
+<?php $namespace = $block->getNamespace(); ?>
+<div class="<?= $namespace ?>-form-wrapper">
+    <?php $form = $block->beginForm([
+        'action'  => $block->getActionUrl(),
+        'id'      => "{$namespace}_form",
+        'method'  => 'POST',
+        // 'options' => ['autocomplete' => 'off'],
+    ]); ?>
+        <?= $this->render('form/edit_action_buttons.phtml', ['block' => $block]) ?>
+
+        <div class="fields-wrapper <?= $colSize ?? 'col-8' ?>">
+            <?= $this->render($block->getFormFieldsTemplate(), [
+                'form' => $form, 
+                'block' => $block, 
+                'model' => $block->getModel()
+            ]) ?>
+        </div>
+        
+    <?php $block->endForm(); ?>
+</div>

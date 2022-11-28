@@ -1,0 +1,39 @@
+<?php
+
+/* @var $this \yii\web\View */
+/* @var $content string */
+
+// use yii\helpers\Html;
+// use yii\helpers\Url;
+// use app\modules\Codnitive\Template\assets\Main;
+// Main::register($this);
+
+// use Yii;
+// use app\modules\Codnitive\Core\helpers\Tools;
+$block->registerAssets($this, 'Template', 'StickySidebar');
+?>
+<!-- Navigation-->
+<div class="col-md-3 sidebar p-0">
+    <div class="account__sidebar__inner pb-5">
+    <div class="pb-2">
+        <?= $this->render('navigation/side.phtml'); ?>
+    </div>
+    </div>
+</div>
+<div class="sidebar-background"></div>
+<div class="sidebar_toggle_btn">
+    <i class="fa fa-ellipsis-v mr-2 ml-0 d-block"></i>
+    <span class="d-block"><?= __('account', 'Menu') ?></span>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.sidebar').stickySidebar({
+        containerSelector: '.account-wrapper',
+        innerWrapperSelector: '.account__sidebar__inner',
+        topSpacing: 75,
+        // bottomSpacing: 75,
+        resizeSensor: true,
+        minWidth: 991
+    });
+});
+</script>

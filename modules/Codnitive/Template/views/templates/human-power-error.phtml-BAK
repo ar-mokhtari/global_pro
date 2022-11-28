@@ -1,0 +1,16 @@
+<section class="error-section">
+    <div class="container">
+        <div class="row">	
+            <div class="col-sm-12 mx-auto my-5 text-center">
+                <div class="error-bg">
+                    <h1 class="text-center"><?= $statusCode ?></h1>
+                </div>
+                <div class="error-description">
+                    <h3 class="h2"><?= $name ?></h3>
+                    <p><?= $message ?></p>
+                    <a href="" class="home-link">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

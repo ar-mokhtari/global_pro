@@ -1,0 +1,32 @@
+<div role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" id="detail_modal"
+     data-backdrop="static"
+     data-keyboard="true" class="modal" tabindex="0"
+     style="display: none; padding-right: 19px;">
+    <div class="modal-dialog modal_center modal-lg">
+        <div class="modal-content">
+            <div class="modal-header " style="overflow: hidden">
+                <h5 class="modal-title"
+                    style="display: inline-block;"><?= __('officeautomation', 'Letter detail') ?></h5>
+                <button type="button"
+                        style="float: left;opacity: 1"
+                        class="close cl_search detail_modal_closed"
+                        data-dismiss="modal"
+                        aria-hidden="true"
+                        aria-label="Close"
+                >
+                    <i style="opacity: 1;" class="fa fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="detail_modal_box">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on('close', function () {
+        alert();
+        $(".circulation_modal").focus();
+    });
+</script>

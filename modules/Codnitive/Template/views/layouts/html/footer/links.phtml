@@ -1,0 +1,54 @@
+<div class="footer-link ">
+    <div class="row">
+        <div class="col-12 col-lg-8 col-md-8">
+            <div class="row">
+                <div class="col-12 col-lg-4 col-md-4 col-sm-4 mb-3">
+                    <div class="footer_title"><?= __('template', 'Services') ?></div>
+                    <aside class="f_widget categories_widget categories_widget2">
+                        <ul>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('', ['tab' => 'box-flight']) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sample') ?></a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-12 col-lg-5 col-md-4 col-sm-4 mb-2">
+                    <div class="footer_title"><?= __('template', 'Useful Links') ?></div>
+                    <aside class="f_widget categories_widget categories_widget2 d-flex flex-column justify content-between flex-lg-row flex-md-row">
+                        <ul>
+                            <li><a href="<?= tools()->getUrl() ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Home') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('about-us') ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'About Us') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('contact-us') ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Contact Us') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('terms-and-conditions') ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Terms and Conditions') ?></a></li>
+                        </ul>
+                        <?php /*<ul>
+                            <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'How to Buy') ?></a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Job Seek') ?></a></li>
+                            <li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Partnership') ?></a></li>
+                        </ul>*/ ?>
+                    </aside>
+                </div>
+                <div class="col-12 col-lg-3 col-md-4 col-sm-4 mb-2">
+                    <div class="footer_title"><?= __('template', 'Account') ?></div>
+                    <aside class="f_widget categories_widget">
+                        <ul>
+                            <?php $loginRoute = 'account'; ?>
+                            <?php if (tools()->isGuest()): ?>
+                            <?php $loginRoute = 'user/login'; ?>
+                            <li><a href="<?= tools()->getUrl('user/register') ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sign Up') ?></a></li>
+                            <?php endif ?>
+                            <li><a href="<?= tools()->getUrl($loginRoute) ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Sign In') ?></a></li>
+                            <li><a href="<?= tools()->getUrl('account') ?>"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Account') ?></a></li>
+                            <?php /*<li><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i><?= __('template', 'Track Ticket') ?></a></li>*/ ?>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

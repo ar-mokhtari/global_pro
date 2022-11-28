@@ -1,0 +1,378 @@
+/* .field-settings-form-gender #settings-form-gender label:first-child {
+    margin-right: 150px;
+} */
+textarea {
+    max-width: 100%;
+    max-height: 150px;
+}
+.tab-item {
+    cursor: pointer;
+    overflow: hidden;
+}
+.hidden {
+    display: none;
+}
+.scroll-to-top {
+    z-index: 9999;
+}
+.help-block-error {
+    color: #bb0000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* .form-group {
+    margin-bottom: 15px;
+} */
+.radio-label label,
+.checkbox-label label {
+    float: left;
+}
+.radio-inputs-list,
+.checkbox-inputs-list {
+    margin-left: 16.666667%;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+}
+.checkbox-group .checkbox-inputs-list {
+    border: 1px solid #ddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: .75rem 0 .75rem 1rem;
+}
+.radio-inputs-list label,
+.checkbox-inputs-list label {
+    margin-left: .25rem;
+    margin-right: 1.25rem;
+}
+.checkbox-group .radio-inputs-list label,
+.checkbox-group .checkbox-inputs-list label {
+    margin-top: .75rem;
+    margin-bottom: .75rem;
+}
+.one-row {
+    padding: 10px 20px;
+}
+.one-row .form-group {
+    float: left;
+}
+.one-row > .form-group > .row > label.col-lg-2 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+.three-in-row > .form-group > .row > label.col-lg-2 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 41.666667%;
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+}
+.three-in-row > .form-group > .row > label + div {
+    padding-left: 7px;
+}
+.three-in-row .form-group:last-child {
+    padding-left: 0;
+}
+/* .one-row > .form-group > .row > div.col-lg-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 83.333333%;
+    flex: 0 0 83.333333%;
+    max-width: 83.333333%;
+}
+.one-row > .form-group:first-child > .row > div.col-lg-4 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 58.333333%;
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+    padding-left: 20px;
+} */
+ul.errors-message {
+    margin-left: 20px;
+    list-style-type: disc;
+}
+form div.required label.control-label:after {
+  content: " * ";
+  color: red;
+  display: inline;
+}
+.small-preview .control-label,
+.no-preview .control-label {
+    padding-left: 0;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    width: 16.666667%;
+}
+.small-preview .file-input,
+.no-preview .file-input {
+    display: inline-block;
+    width: 53%;
+}
+.form-fields-wrapper {
+    position: relative;
+}
+.form-fields-wrapper .remove-btn {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+.group-btn {
+    padding-top: 30px;
+    clear: both;
+}
+.pac-container.pac-logo::after {
+    display: none !important;
+}
+.account .content-wrapper > .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.account .navbar-nav.navbar-sidenav {
+    overflow: auto;
+}
+td .event-name {
+    font-size: 1.25rem;
+}
+td .date-event {
+    font-size: 1.05rem;
+}
+.grid .summary {
+    margin-bottom: 15px;
+}
+.pagination {
+    float: right;
+}
+.pagination .paginate_button a,
+.pagination .paginate_button span {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+.pagination .paginate_button.disabled span {
+    color: #6c757d;
+}
+.pagination .paginate_button a:hover {
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+.pagination .paginate_button.active a {
+    z-index: 1;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.per-page-wrapper select {
+    display: inline-block;
+    margin: 0 3px;
+}
+.my-order.invoice .items dl,
+.my-order.invoice .items dd {
+    margin-bottom: 0;
+}
+.recent-received-orders .summary {
+    display: none;
+}
+.tab-items {
+    background: transparent;
+}
+#mainNav .navbar-sidenav {
+    overflow: auto !important;
+}
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+.new-messages-wrapper .dropdown-item {
+    width: 300px !important;
+    /* max-width: 350px !important; */
+}
+.new-messages-wrapper .empty {
+    width: 300px;
+    padding: .5rem 1.5rem 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+.new-messages-wrapper .dropdown-message {
+    overflow: hidden !important;
+    max-width: none !important;
+    text-overflow: ellipsis !important;
+}
+.navbar {
+    margin-right: 0;
+    /* padding-left: 20px; */
+}
+#navbarResponsive {
+    position: fixed;
+    width: 100%;
+}
+.navbar .navbar-collapse .navbar-nav {
+    margin-right: -1rem;
+    margin-left: 20px !important;
+}
+.navbar .navbar-collapse .navbar-nav .nav-link {
+    margin: 0 10px;
+}
+.navbar .navbar-collapse .sidenav-toggler .nav-link {
+    margin: 0;
+}
+.fa-angle-left:before {
+    content: '\f105';
+}
+.fa-angle-right:before,
+#mainNav .navbar-collapse .navbar-sidenav .nav-link-collapse.collapsed:after,
+#mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link:after {
+    content: '\f104';
+}
+.card-header .fa {
+    margin-left: 10px;
+}
+.account .breadcrumb {
+    margin-top: 0;
+}
+.account .breadcrumb li:after {
+    display: none;
+}
+.account .breadcrumb-item + .breadcrumb-item {
+    padding-right: 0;
+}
+#account-form {
+    /* width: 50%; */
+    text-align: right;
+}
+.row-submit {
+    text-align: left;
+    padding: 10px 20px;
+}
+.fa-check:before {
+    content: '\f111';
+    font-size: 10px;
+}
+.account .checkbox .cr, 
+.account .radio .cr {
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0;
+}
+input[name*='password'],
+input[name*='phone'],
+input[name*='mobile'],
+input[name*='tel'],
+input[name*='username'],
+input[name*='email'] {
+    direction: ltr;
+    text-align: left;
+}
+tr {
+    border-right: 1px solid #e5e5e5 !important;
+}
+.table-responsive {
+    border: 0 none;
+}
+.data-table.grid .grid-view {
+    clear: both;
+}
+.invoice .table-responsive thead th {
+    background-color: rgba(0, 0, 0, 0);
+}
+.invoice .table-responsive .text-right {
+    text-align: right !important;
+}
+/* .invoice .text-left {
+    text-align: left !important;
+} */
+.breadcrumb {
+    border: 1px solid #ddd;
+    -webkit-box-shadow: none !important;
+       -moz-box-shadow: none !important;
+            box-shadow: none !important;
+}
+.account .small {
+  font-size: 15px;
+  font-weight: 500;
+}
+.account .alert-container {
+  margin-top: 1rem!important;
+}
+.account .account-wrapper {
+  max-width: 90%;
+}
+.account .card {
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    border-radius: .25rem;
+}
+.dashboard .dashboard-user-info tr {
+    border: 0 none !important;
+}
+.data-table.grid .per-page {
+    padding: 0;
+}
+.data-table.grid .per-page div:last-child {
+    display: inline;
+    margin-right: 25px;
+}
+.wallet-charge-form .field-wallet_charge-charge_amount {
+    padding: 0;
+}
+.wallet-charge-form .field-wallet_charge-charge_amount .form-group {
+    margin-bottom: 0;
+}
+.wallet-charge-form .btn-blue {
+    margin-top: 20px;
+    height: 38px;
+}
+.wallet-charge-form .field-error {
+    position: absolute;
+    bottom: -20px;
+}
+.wallet-info .currency {
+    font-size: 25px;
+}
+.account .account-wrapper .table>tbody>tr>td {
+    padding: 13px 10px;
+}
+.dashboard .wallet-description {
+    display: none !important;
+}
+.account .form-group {
+    margin-bottom: 0;
+}
+.account .table>tbody>tr>th {
+    border-top: 0;
+}
+.account .table tr {
+    border-right: 0 !important;
+}
+.orders-grid-table .table-striped tbody tr:nth-of-type(odd),
+.orders-grid-table .table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(0,0,0,.05);
+}
+.grid-ticket-detail .ticket-number p {
+    margin-bottom: 0;
+}
+.grid-ticket-detail .insurance-policy-number {
+    white-space: nowrap;
+}
+.orange .orders-grid a.submit_btn2 {
+    color: #696969;
+}
+.disabled {
+  cursor: not-allowed !important;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 600px;
+    }
+}

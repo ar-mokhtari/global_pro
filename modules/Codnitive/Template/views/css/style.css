@@ -1,0 +1,211 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?dxrl3f');
+  src:  url('fonts/icomoon.eot?dxrl3f#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?dxrl3f') format('truetype'),
+    url('fonts/icomoon.woff?dxrl3f') format('woff'),
+    url('fonts/icomoon.svg?dxrl3f#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-work:before {
+  content: "\e900";
+}
+.icon-family-group:before {
+  content: "\e901";
+}
+.icon-party:before {
+  content: "\e914";
+}
+.icon-pedestrian-walking:before {
+  content: "\e915";
+}
+.icon-success:before {
+  content: "\e916";
+}
+.icon-worker:before {
+  content: "\e917";
+}
+.icon-airplane:before {
+  content: "\e927";
+}
+.icon-bus:before {
+  content: "\e902";
+}
+.icon-customer-club:before {
+  content: "\e903";
+}
+.icon-date:before {
+  content: "\e904";
+}
+.icon-event:before {
+  content: "\e905";
+}
+.icon-game:before {
+  content: "\e906";
+}
+.icon-hotel:before {
+  content: "\e907";
+}
+.icon-information:before {
+  content: "\e908";
+}
+.icon-insurance:before {
+  content: "\e909";
+}
+.icon-like:before {
+  content: "\e90a";
+}
+.icon-location:before {
+  content: "\e90b";
+}
+.icon-login:before {
+  content: "\e90c";
+}
+.icon-plus:before {
+  content: "\e90d";
+}
+.icon-tick:before {
+  content: "\e90e";
+}
+.icon-ticket-select:before {
+  content: "\e90f";
+}
+.icon-ticket:before {
+  content: "\e910";
+}
+.icon-tour:before {
+  content: "\e911";
+}
+.icon-train:before {
+  content: "\e912";
+}
+.icon-unlike:before {
+  content: "\e913";
+}
+.icon-king:before {
+  content: "\e925";
+}
+.icon-fly:before {
+  content: "\e928";
+/*    font-size: 40px;*/
+}
+.icon-flight:before {
+  content: "\e929";
+}
+.icon-plane:before {
+  content: "\e92a";
+}
+.icon-travel:before {
+  content: "\e92b";
+    transform: rotate(50deg)
+}
+.icon-airport:before {
+  content: "\e92c";
+}
+.icon-ticket1:before {
+  content: "\e92d";
+}
+.icon-around:before {
+  content: "\e92e";
+}
+.icon-airplane1:before {
+  content: "\e92f";
+   
+}
+.icon-plane-1:before {
+  content: "\e930";
+}
+.icon-plane-2:before {
+  content: "\e931";
+ 
+}
+.icon-bathroom:before {
+  content: "\e932";
+}
+.icon-airplane-1:before {
+  content: "\e933";
+}
+.icon-trolley:before {
+  content: "\e934";
+}
+.icon-scale:before {
+  content: "\e935";
+}
+.icon-seat-4:before {
+  content: "\e918";
+}
+.icon-seat:before {
+  content: "\e919";
+}
+.icon-seat-1:before {
+  content: "\e91a";
+}
+.icon-seat-2 .path1:before {
+  content: "\e91b";
+  color: rgb(226, 239, 250);
+}
+.icon-seat-2 .path2:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: rgb(202, 221, 234);
+}
+.icon-seat-2 .path3:before {
+  content: "\e91d";
+  margin-left: -1em;
+  color: rgb(93, 109, 125);
+}
+.icon-seat-2 .path4:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: rgb(80, 97, 109);
+}
+.icon-seat-2 .path5:before {
+  content: "\e91f";
+  margin-left: -1em;
+  color: rgb(53, 73, 93);
+}
+.icon-seat-2 .path6:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(42, 58, 76);
+}
+.icon-seat-2 .path7:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(53, 73, 93);
+}
+.icon-seat-2 .path8:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: rgb(42, 58, 76);
+}
+.icon-seat-2 .path9:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: rgb(208, 209, 210);
+}
+.icon-seat-2 .path10:before {
+  content: "\e924";
+  margin-left: -1em;
+  color: rgb(191, 192, 193);
+}
+.icon-seat-41:before {
+  content: "\e926";
+}

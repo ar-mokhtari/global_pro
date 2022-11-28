@@ -1,0 +1,44 @@
+<?php
+
+$block = new app\modules\Codnitive\Template\blocks\SearchForm;
+// $block->registerAssets($this, 'Template', 'MDPersianDatepicker');
+$forms = $block->getConfigs();
+// $activeTab = 'box-bus';
+
+?>
+
+<!-- 3 Boxes -->
+<div class="bilit-search-box">
+    <div class="boxes tabs d-flex flex-nowrap justify-content-center">
+        <ul class="flex-md-nowrap flex-sm-wrap flex-wrap  search d-flex tab-items justify-content-md-center justify-content-sm-center">
+            <?php foreach($forms as $index => $form): ?>
+            <li class="p-sm-2 tab-<?= $index ?> tab-item" 
+                id="<?= $form['name'] ?>" 
+                data-tab-id="<?= $form['content_id'] ?>" 
+                data-form="<?= $form['form'] ?>"
+                data-color="<?= $form['color'] ?>"
+                data-page-title="<?= __($form['module'], $form['page_title']) ?>
+            ">
+                <div class="d-flex d-md-flex flex-md-row align-items-center justify-content-center item-search order-<?= $index ?> <?= $form['name'] ?>">
+                    <span class="<?= $form['icon'] ?> tab-icon"></span>
+                </div>
+                <div class="title <?= $form['title_class'] ?> <?= $form['color'] ?> d-sm-none d-md-block d-none d-sm-block" 
+                    style="color: <?= $form['color_code'] ?>;">
+                        <?= __('template', $form['title']) ?>
+                </div>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="container tab-wrapper">
+            <?php foreach($forms as $index => $form): ?>
+            <div class="tab <?= $form['content_id'] ?> tab-<?= $index ?>" id="<?= $form['content_id'] ?>">
+                <?php if (isset($form['template']) && !empty($form['template'])): ?>
+                <?= $this->render($form['template']) ?>
+                <?php endif ?>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>

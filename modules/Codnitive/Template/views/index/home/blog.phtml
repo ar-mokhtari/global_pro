@@ -1,0 +1,45 @@
+<?php 
+use \app\modules\Codnitive\Mag\models\Articles;
+app()->getModule(\app\modules\Codnitive\Mag\Module::MODULE_ID);
+app()->getModule(\app\modules\Codnitive\Calendar\Module::MODULE_ID);
+?>
+
+<section id="blog" class="section-full">
+    <div class="container">
+        <div>
+            <div class="d-flex flex-row justify-content-between box-sliders-title">
+                <h4><?= __('template', 'Bilit.com Magazine') ?></h4> 
+                <a class="full-lists " href="">
+                    <?= __('template', '<span class="d-none d-sm-inline">View </span>All') ?>
+                    <i class="fa fa-left"></i>
+                </a>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <?php foreach ((new Articles)->getLastNews() as $article): ?>
+            <?php $link = $article->getArticleLink() ?>
+            <div class="col-sm-6 col-xs-12 col-lg-3 col-md-6  mt-5">
+                <div class="single-publish d-flex flex-column justify-content-center">
+                    <img src="<?= $article->getImageUrl() ?>" class="img-fluid" alt="">
+                    <div class="top">
+                        <div class="mb-15 d-flex">
+                            <a href="javascript:;"><?= $article->getPublishDate() ?></a>
+                            <span class="line">|</span>
+                            <a href="javascript:;"><?= __('mag', 'by {author}', $article->attributes) ?></a>
+                        </div>
+                        <h6 class="text-uppercase h-60"><a href="<?= $link ?>" target="_blank"><?= $article->title ?></a></h6>
+                    </div>
+                    <p class="mb-30 h-80"><?= $article->brief ?></p>
+                    <a href="<?= $link ?>" class="details-btn d-flex justify-content-center align-items-center">
+                        <span class="details"><?= __('template', 'More') ?></span>
+                        <span class="fas fa-arrow-left"></span>
+                    </a>
+                </div>
+            </div>
+            <?php endforeach ?>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
+        

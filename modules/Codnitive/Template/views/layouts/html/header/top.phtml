@@ -1,0 +1,74 @@
+<!-- Top Bar -->
+<div class="top_bar">
+    <div class="container">
+            <div class="d-flex flex-row  justify-content-between col-12 pl-6 pr-2">
+                <ul class="top_bar_content pl-0">
+                    <?php if (tools()->isGuest()): ?>
+                        <li class="top-bar-item">
+                            <?php 
+                                $url     = app()->request->url;
+                                $params  = tools()->getUrlStrParameters($url);
+                                $prevUrl = $params['prev_url'] ?? $url
+                            ?> 
+                            <a href="<?= tools()->getUrl('user/login', ['prev_url' => $prevUrl]); ?>">
+                                <i class="fa fa-user-plus color mr-1 ml-0"></i>
+                                <span><?= __('template', 'Sign In') ?></span>
+                            </a>
+                            <span style="font-size: 12px; line-height: 14px;"> / </span>
+                            <a href="<?= tools()->getUrl('user/register', ['prev_url' => $prevUrl]); ?>">
+                                <span><?= __('template', 'Sign Up') ?></span>
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="top-bar-item d-none d-sm-block">
+                            <a href="<?= tools()->getUrl('user/logout'); ?>">
+                                <i class="fas fa-sign-out-alt color mr-1 ml-0 pl-0"></i>
+                                <span class="d-none d-md-inline"><?= __('template', 'Sign Out') ?></span>
+                            </a>
+                        </li>
+                        <?php /*<li class="top-bar-item"><a href="<?= tools()->getUrl('account'); ?>"><i class="fa fa-user-plus color mr-1 ml-0"></i><?= __('template', 'Account') ?></a></li>*/ ?>
+                        <li class="top-bar-item">
+                            <a href="<?= tools()->getUrl('account'); ?>">
+                                <i class="fa fa-user color mr-1 ml-0"></i>
+                                <span class="d-none d-md-inline"><?= tools()->getUser()->identity->fullname ?? __('template', 'Welcome') ?></span>
+                            </a>
+                        </li>
+<!--                        <li class="top-bar-item">
+                            <a href="<?/*= tools()->getUrl('account/wallet'); */?>">
+                                <i class="fa fa-wallet color mr-1 ml-0"></i>
+                                <span><?/*= tools()->formatRial((int) tools()->getUser()->identity->credit_amount) */?></span>
+                            </a>
+                        </li>-->
+                    <?php endif; ?>
+
+<!--                    --><?php //if (tools()->isAdmin()): ?>
+<!--                        <li class="top-bar-item d-none d-lg-block">
+                            <a href="<?/*= tools()->getUrl('admin/dashboard'); */?>">
+                                <i class="fas fa-chart-pie color mr-1 ml-0"></i>
+                                <span class="d-none d-md-inline"><?/*= __('template', 'Control Panel') */?></span>
+                            </a>
+                        </li>-->
+                        <li class="top-bar-item d-none d-lg-block">
+                            <a class="software_input" href="<?= tools()->getUrl('centraloffice'); ?>">
+                                <i class="fas fa-cog fa-pulse color mr-1 ml-0"></i>
+                                <span class="d-none d-md-inline"><?= __('template', 'SoftwareMainPage') ?></span>
+                            </a>
+                        </li>
+<!--                    --><?php //endif ?>
+                </ul>
+            </div>
+    </div>
+</div>
+<script>
+    $('.software_input').click(function () {
+        swal.fire({
+            background: 'rgba(255,255,255,0.91)',
+            animation: false,
+            width: '25rem',
+            html:
+                '<div class="fas fa-cog fa-pulse"></div>' +
+                '<div style="display:inline">&nbsp;<?= __('template','Connecting'); ?></div>',
+            showConfirmButton: false,
+        });
+    });
+</script>

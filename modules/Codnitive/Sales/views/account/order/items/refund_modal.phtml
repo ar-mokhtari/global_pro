@@ -1,0 +1,34 @@
+<div class="d-flex ml-auto">
+    <button
+        class="btn submit_btn2 ml-2 mr-0"
+        data-toggle="modal"
+        data-target="#<?= $modalId ?>"
+    >
+        <?= __('template', 'Refund') ?>
+    </button>
+</div>
+<!-- <<< Modal -->
+<div class="modal fade bd-example-modal-md" 
+    data-backdrop="static" 
+    data-keyboard="true"
+    id="<?= $modalId ?>" 
+    tabindex="-1" role="dialog" 
+    aria-labelledby="ticketRefundModalCenterTitle" 
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+        <div class="modal-content">
+        <div class="modal-body modal-body-refund">
+            <h5 class="mt-2 blue text-center bd-bottom p-2"><?= $title ?></h5>
+            <div class="p-3"><?= $body ?></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= __('template', 'Close') ?></button>
+            <?php if($showRefundUrl): ?>
+            <a href="<?= tools()->getUrl('account/sales/refund', ['id' => $itemId]) ?>" class="text-white btn-blue"><?= __('template', 'Yes Agree') ?></a>
+            <?php endif ?>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- >>> Modal -->

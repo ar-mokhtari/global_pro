@@ -1,0 +1,30 @@
+<?php 
+app()->getModule('wallet');
+$block = new \app\modules\Codnitive\Wallet\blocks\Transaction;
+// $onlineTransaction = $transaction->getOnlineTransaction();
+$transactionsCollection = $transaction->getTransactionsCollection();
+?>
+<?php if (empty($transactionsCollection)): ?>
+    <div class="d-flex flex-column p-3 border mx-3">
+        <div class="transaction-info wallet-transaction row">
+            <div class="col-2"><?= __('wallet', 'Wallet') ?>: </div>
+            <div class="col-10"><?= __('template', 'Transaction info not found, or customer doesn\'t back to store!') ?></div>
+        </div>
+    </div>
+<?php else: ?>
+    <?php foreach ($transactionsCollection as $transaction): ?>
+        <div class="d-flex flex-column p-3 border mx-3 mb-2">
+            <div class="transaction-info wallet-transaction row">
+                <div class="col-2"><?= __('wallet', 'Wallet') ?>: </div>
+                <div class="col-2"><?= tools()->formatRial(abs(floatval($transaction->change_amount))) ?></div>
+                <div class="col-5"><?= $transaction->description ?></div>
+                <div class="col-3 ltr"><?= $block->formatDateTime($transaction->trasaction_date) ?></div>
+            </div>
+            <?php $onlineTransaction = $transaction->loadOnlineTransaction()->getOnlineTransaction(); ?>
+            <?php if (isset($onlineTransaction->id) && $onlineTransaction->id): ?>
+                <hr/>
+                <?= $this->render($onlineTransaction->getTransactionTemplate(), ['onlineTransaction' => $onlineTransaction, 'showMoreDetails' => $showMoreDetails]); ?>
+            <?php endif; ?>
+        </div>
+    <?php endforeach ?>
+<?php endif; ?>

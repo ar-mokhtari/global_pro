@@ -1,0 +1,20 @@
+<?php 
+
+namespace app\modules\Codnitive\Sales\models\Order;
+
+use app\modules\Codnitive\Core\models\DynamicModel;
+
+class PaymentInfo extends DynamicModel
+{
+    protected $_module = 'sales';
+    protected $_attributes = ['Amount', 'MID', 'ResNum', 'RedirectURL'];
+    protected $_rules = [
+        'required' => ['Amount', 'MID', 'ResNum', 'RedirectURL'], 
+    ];
+    // protected $_labels = [
+    //     'country'  => 'Destination Country',
+    //     'duration' => 'Duration of Stay',
+    //     // 'birthday' => 'Birthday'
+    //     'age' => 'Age'
+    // ];
+}

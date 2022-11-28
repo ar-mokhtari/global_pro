@@ -1,0 +1,54 @@
+<section class="d-flex flex-row flex-wrap mb-5 pb-5">
+    <div class="col-12 col-lg-7">
+        <?php /*<h3 class="mb-5"><?= __('admin', 'API panels balance') ?></h3>*/ ?>
+        <div id="dashboard_apis_balance">
+            <div class="text-center">
+                <div class="message">
+                    <i class="fa fa-spinner rotating"></i>
+                    <?= __('admin', 'Trying to get APIs balances, please be patient...') ?>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        bilit.ajax('<?= tools()->getUrl('admin/admin/ajax/getBalances') ?>', {}, 'GET');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-5">
+        <?php /*<h3 class="mb-5"><?= __('admin', 'Today Orders') ?></h3>*/ ?>
+        <div id="dashboard_today_orders">
+            <div class="text-center">
+                <div class="message">
+                    <i class="fa fa-spinner rotating"></i>
+                    <?= __('admin', 'Calculating today orders, please be patient...') ?>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        bilit.ajax('<?= tools()->getUrl('admin/admin/ajax/getTodayOrders') ?>', {}, 'GET');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php $numberOfPastDays = 30 ?>
+<section class="mb-5 pb-5">
+    <div class="col-12 col-12">
+        <?php /*<h3 class="mb-5"><?= __('admin', 'Past 30 Days Sales') ?></h3>*/ ?>
+        <div id="dashboard_past_days_sales">
+            <div class="text-center">
+                <div class="message">
+                    <i class="fa fa-spinner rotating"></i>
+                    <?= __('admin', 'Calculating past {days} days sales, please be patient...', ['days' => $numberOfPastDays]) ?>
+                </div>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        bilit.ajax('<?= tools()->getUrl('admin/admin/ajax/getPastDaysSales') ?>', {days: <?= $numberOfPastDays ?>}, 'GET');
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>

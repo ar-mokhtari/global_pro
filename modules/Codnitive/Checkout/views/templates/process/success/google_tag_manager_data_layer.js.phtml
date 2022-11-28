@@ -1,0 +1,7 @@
+<?php /*<?= $this->render('google_tag_manager.js.phtml') ?>*/ ?>
+<script>
+$(document).ready(function () {
+    window.dataLayer  = window.dataLayer || [];
+    window.dataLayer.push(<?= $block->getDataLayer() ?>);
+});
+</script>
